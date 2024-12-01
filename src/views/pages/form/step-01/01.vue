@@ -1,13 +1,72 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, watch, computed } from 'vue'
+import { useLocalStorage } from '@vueuse/core'
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+
 import { useMultiStepForm } from '@/composables'
 import { lifeMapStep01FormInjectionKeySymbol } from '@/symbols'
 
-const { goToStep, getPrevStep, getNextStep, progress } = useMultiStepForm(
-	lifeMapStep01FormInjectionKeySymbol
+const CURRENT_FORM_GROUP = 1 // identificador para o grupo de inputs - 01
+
+const formGroupLocalAnswers = useLocalStorage(
+	`${lifeMapStep01FormInjectionKeySymbol.description}`,
+	{
+		[CURRENT_FORM_GROUP]: {},
+	}
 )
 
-onMounted(() => {})
+const {
+	data: formData,
+	goToStep,
+	getPrevStep,
+	getNextStep,
+} = useMultiStepForm(lifeMapStep01FormInjectionKeySymbol)
+
+// TODO: criar tipagem para initialValues
+
+const initialValues = computed(
+	() =>
+		formGroupLocalAnswers.value[CURRENT_FORM_GROUP] ||
+		formData.value[CURRENT_FORM_GROUP]
+)
+
+const validationSchema = yup.object({
+	text: yup.string().required('Campo obrigatório'),
+})
+
+const { meta, values, setValues, defineField, handleSubmit } = useForm({
+	validationSchema,
+	initialValues: initialValues.value,
+})
+
+const [text] = defineField('text')
+
+const handleSubmitForm = handleSubmit(async () => {
+	formGroupLocalAnswers.value[CURRENT_FORM_GROUP] = {
+		...formGroupLocalAnswers.value[CURRENT_FORM_GROUP],
+		...values,
+	}
+
+	await goToStep(getNextStep())
+})
+
+watch(
+	values,
+	newValues => {
+		formData.value = {
+			...formData.value,
+			...newValues,
+		}
+	},
+	{
+		deep: true,
+	}
+)
+
+onMounted(() => {
+	setValues(initialValues.value || {})
+})
 </script>
 
 <template>
@@ -17,7 +76,12 @@ onMounted(() => {})
 				<span class="mb-2 font-weight-medium"
 					>É casada(o), solteira(o) ou divorciada(o) - VOCÊ É FELIZ ASSIM?</span
 				>
-				<v-textarea placeholder="..." variant="outlined" color="primary" />
+				<v-textarea
+					v-model="text"
+					placeholder="Escreva aqui..."
+					variant="outlined"
+					color="primary"
+				/>
 			</div>
 		</v-card-item>
 		<v-card-actions class="px-4">
@@ -37,11 +101,12 @@ onMounted(() => {})
 						</v-btn>
 						<div v-if="getPrevStep()" class="mx-1"></div>
 						<v-btn
-							@click="goToStep(getNextStep() as any)"
+							@click="handleSubmitForm"
 							color="primary"
 							variant="flat"
 							size="large"
 							:width="!getPrevStep() ? '100%' : '49%'"
+							:disabled="!meta.valid"
 						>
 							Continuar
 						</v-btn>

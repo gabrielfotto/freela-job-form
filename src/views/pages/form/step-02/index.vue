@@ -10,6 +10,7 @@ import {
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
+const CURRENT_STEP_ID = 1
 const formContext = provideMultiStepForm(lifeMapStep02FormInjectionKeySymbol, {
 	initialState: {},
 	steps: [
@@ -19,18 +20,18 @@ const formContext = provideMultiStepForm(lifeMapStep02FormInjectionKeySymbol, {
 		{ to: '/step-02/04', meta: { title: 'Fase 02 - Mental | 04' } },
 		{ to: '/step-02/05', meta: { title: 'Fase 02 - Mental | 05' } },
 	],
+	onSubmit: data => handleSubmitForm(data),
 })
 
-async function handleSubmitForm() {
-	console.log('lifeMapFormContext', lifeMapFormContext.getStep())
+async function handleSubmitForm(data) {
+	console.log('STEP 02 DATA', data)
 	lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 }
 
 onBeforeMount(() => {
-	lifeMapFormContext.setCurrentStepId(1)
+	// defini a etapa do form principal -> Fase 02 - Mental
+	lifeMapFormContext.setCurrentStepId(CURRENT_STEP_ID)
 })
-
-onMounted(async () => {})
 </script>
 
 <template>
@@ -43,7 +44,7 @@ onMounted(async () => {})
 				action=""
 				method="POST"
 				novalidate
-				@submit.prevent="handleSubmitForm"
+				@submit.prevent="formContext.handleSubmit"
 			>
 				<RouterView />
 			</form>

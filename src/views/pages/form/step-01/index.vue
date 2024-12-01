@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeMount } from 'vue'
+import { onBeforeMount, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
+import { useLocalStorage } from '@vueuse/core'
 
 import { provideMultiStepForm, useMultiStepForm } from '@/composables'
 import {
@@ -10,27 +11,34 @@ import {
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
+const CURRENT_FORM_STEP_ID = 0
+
+const initialState = useLocalStorage(
+	`${lifeMapStep01FormInjectionKeySymbol.description}`,
+	{}
+)
+
 const formContext = provideMultiStepForm(lifeMapStep01FormInjectionKeySymbol, {
-	initialState: {},
+	initialState: initialState.value,
 	steps: [
-		{ to: '/step-01/01', meta: { title: 'Fase 02 - Mental | 01' } },
-		{ to: '/step-01/02', meta: { title: 'Fase 02 - Mental | 02' } },
-		{ to: '/step-01/03', meta: { title: 'Fase 02 - Mental | 03' } },
-		{ to: '/step-01/04', meta: { title: 'Fase 02 - Mental | 04' } },
-		{ to: '/step-01/05', meta: { title: 'Fase 02 - Mental | 05' } },
+		{ to: '/step-01/01', meta: { title: 'Fase 01 - Dados Pessoais | 01' } },
+		{ to: '/step-01/02', meta: { title: 'Fase 01 - Dados Pessoais | 02' } },
+		{ to: '/step-01/03', meta: { title: 'Fase 01 - Dados Pessoais | 03' } },
+		{ to: '/step-01/04', meta: { title: 'Fase 01 - Dados Pessoais | 04' } },
+		{ to: '/step-01/05', meta: { title: 'Fase 01 - Dados Pessoais | 05' } },
 	],
+	onSubmit: data => handleSubmitForm(data),
 })
 
-async function handleSubmitForm() {
-	console.log('lifeMapFormContext', lifeMapFormContext.getStep())
+async function handleSubmitForm(data) {
+	console.log('STEP 01 DATA', data)
 	lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 }
 
 onBeforeMount(() => {
-	lifeMapFormContext.setCurrentStepId(0)
+	// defini a etapa do form principal -> Fase 01 - Dados Pessoais
+	lifeMapFormContext.setCurrentStepId(CURRENT_FORM_STEP_ID)
 })
-
-onMounted(() => {})
 </script>
 
 <template>
@@ -43,7 +51,7 @@ onMounted(() => {})
 				action=""
 				method="POST"
 				novalidate
-				@submit.prevent="handleSubmitForm"
+				@submit.prevent="formContext.handleSubmit"
 			>
 				<RouterView />
 			</form>

@@ -13,12 +13,7 @@ const customizer = useCustomizerStore()
 const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 	initialState: {},
 	steps: [
-		{
-			to: '/step-01',
-			meta: {
-				title: 'Fase 01 - Vida Pessoal',
-			},
-		},
+		{ to: '/step-01', meta: { title: 'Fase 01 - Vida Pessoal' } },
 		{ to: '/step-02', meta: { title: 'Fase 02 - Mental' } },
 		{ to: '/step-03', meta: { title: 'Fase 03 - Infância' } },
 		{ to: '/step-03', meta: { title: 'Fase 04 - Emocional' } },

@@ -14,7 +14,7 @@ import {
 } from 'vue'
 import { useRouter } from 'vue-router'
 
-export type WithId<T> = T & { id: number }
+type WithId<T> = T & { id: number }
 
 export interface StepForm<
 	DATA extends Record<string, any> = Record<string, any>,
