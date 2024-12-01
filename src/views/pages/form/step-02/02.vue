@@ -1,19 +1,11 @@
-<!-- <script setup lang="ts">
-import { ref, onMounted, onBeforeMount } from 'vue'
+<script setup lang="ts">
+import { onMounted, ref, watch } from 'vue'
 import { useMultiStepForm } from '@/composables'
+import { lifeMapStep02FormInjectionKeySymbol } from '@/symbols'
 
-interface StepData {
-	[key: string]: string | number | null
-}
-
-const { currentStep, checkPreviousSteps, goToStep, getNextStep, getPrevStep } =
-	useMultiStepForm()
-
-const currentStepData = ref<StepData>({})
-
-onBeforeMount(() => {
-	checkPreviousSteps()
-})
+const { goToStep, getPrevStep, getNextStep, progress } = useMultiStepForm(
+	lifeMapStep02FormInjectionKeySymbol
+)
 
 onMounted(() => {})
 </script>
@@ -21,10 +13,10 @@ onMounted(() => {})
 <template>
 	<v-card elevation="10" class="rounded-xl">
 		<v-card-item class="px-4">
-			<span class="text-h4">{{ currentStep.meta.title }}</span>
-			<span v-if="currentStep.meta.description" class="text-grey400 mt-3">{{
-				currentStep.meta.description
-			}}</span>
+			<div class="d-flex flex-column">
+				<span class="text-h4">Questão</span>
+				<span class="text-grey400 mt-3">Descrição</span>
+			</div>
 		</v-card-item>
 		<v-card-item class="px-4">
 			<v-row> </v-row>
@@ -43,6 +35,7 @@ onMounted(() => {})
 						>
 							Voltar
 						</v-btn>
+						<div class="mx-1"></div>
 						<v-btn
 							@click="goToStep(getNextStep() as any)"
 							color="primary"
@@ -57,4 +50,4 @@ onMounted(() => {})
 			</v-row>
 		</v-card-actions>
 	</v-card>
-</template> -->
+</template>

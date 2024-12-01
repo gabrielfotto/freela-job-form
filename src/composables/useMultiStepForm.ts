@@ -14,40 +14,40 @@ import {
 } from 'vue'
 import { useRouter } from 'vue-router'
 
-type WithId<T> = T & { id: number }
+export type WithId<T> = T & { id: number }
 
 export interface StepForm<
 	DATA extends Record<string, any> = Record<string, any>,
-	META extends Record<string, any> = Record<string, any>,
+	META extends Record<string, any> = Record<string, any>
 > {
 	meta: META
 	to: string
 
 	validate?: (
-		ctx: MultiStepFormContext<DATA, META>,
+		ctx: MultiStepFormContext<DATA, META>
 	) => Promise<boolean | void> | boolean | void
 }
 
 export interface MultiStepFormConfig<
 	DATA extends Record<string, any> = Record<string, any>,
-	META extends Record<string, any> = Record<string, any>,
+	META extends Record<string, any> = Record<string, any>
 > {
 	initialState: MaybeRefOrGetter<DATA>
 	steps: StepForm<DATA, META>[]
 
 	onSubmit?: (
 		data: DATA,
-		ctx: MultiStepFormContext<DATA, META>,
+		ctx: MultiStepFormContext<DATA, META>
 	) => Promise<void> | void
 	onError?: (
 		error: any,
-		ctx: MultiStepFormContext<DATA, META>,
+		ctx: MultiStepFormContext<DATA, META>
 	) => Promise<void> | void
 }
 
 export interface MultiStepFormContext<
 	DATA extends Record<string, any> = Record<string, any>,
-	META extends Record<string, any> = Record<string, any>,
+	META extends Record<string, any> = Record<string, any>
 > {
 	steps: ComputedRef<WithId<StepForm<DATA, META>>[]>
 	totalSteps: ComputedRef<number>
@@ -64,11 +64,13 @@ export interface MultiStepFormContext<
 	>
 	loading: Readonly<Ref<boolean>>
 	complete: Readonly<Ref<boolean>>
+	manualStepId: Readonly<Ref<number>>
 
 	getStep(id?: number): WithId<StepForm<DATA, META>> | undefined
 	getNextStep(id?: number): WithId<StepForm<DATA, META>> | null
 	getPrevStep(id?: number): WithId<StepForm<DATA, META>> | null
 	goToStep(step?: WithId<StepForm<DATA, META>>): Promise<void>
+	setCurrentStepId(id: number): void
 	reset(initialState?: MaybeRefOrGetter<DATA>): void
 	setErrorMessage(message?: string): void
 	setFieldError(field: string, message?: string): void
@@ -91,10 +93,10 @@ export interface MultiStepFormContext<
  */
 export function provideMultiStepForm<
 	DATA extends Record<string, any> = Record<string, any>,
-	META extends Record<string, any> = Record<string, any>,
+	META extends Record<string, any> = Record<string, any>
 >(
 	injectionKey: Symbol,
-	rules: MultiStepFormConfig<DATA, META>,
+	rules: MultiStepFormConfig<DATA, META>
 ): MultiStepFormContext<DATA, META> {
 	const data = ref<DATA>(klona(toValue(rules.initialState)))
 	const errors = ref<{
@@ -108,20 +110,22 @@ export function provideMultiStepForm<
 
 	const loading = ref(false)
 	const complete = ref(false)
+	const manualStepId = ref<number | null>(null)
 
 	const steps = computed(() => rules.steps.map((step, id) => ({ ...step, id })))
 	const totalSteps = computed(() => steps.value.length)
 	const progress = computed(
-		() => ((currentStepId.value + 1) / totalSteps.value) * 100,
+		() => ((currentStepId.value + 1) / totalSteps.value) * 100
 	)
-	const currentStepId = computed(
-		() =>
-			steps.value.find(step => step.to === router.currentRoute.value.path)
-				?.id ?? 0,
+	const currentStepId = computed(() =>
+		manualStepId.value !== null
+			? manualStepId.value
+			: steps.value.find(step => step.to === router.currentRoute.value.path)
+					?.id || 0
 	)
 	const currentStep = computed(() => steps.value[currentStepId.value])
 	const isLastStep = computed(
-		() => currentStepId.value === totalSteps.value - 1,
+		() => currentStepId.value === totalSteps.value - 1
 	)
 
 	const context: MultiStepFormContext<DATA, META> = {
@@ -139,6 +143,8 @@ export function provideMultiStepForm<
 		getNextStep,
 		getPrevStep,
 		goToStep,
+		manualStepId,
+		setCurrentStepId,
 		reset,
 		setErrorMessage,
 		setFieldError,
@@ -163,6 +169,18 @@ export function provideMultiStepForm<
 	async function goToStep(step?: StepForm<DATA, META>) {
 		if (step) {
 			await router.push(step.to)
+		}
+	}
+
+	function setCurrentStepId(stepId: number) {
+		if (stepId >= 0 && stepId < totalSteps.value) {
+			manualStepId.value = stepId
+		} else {
+			console.warn(
+				`Invalid stepId: ${stepId}. Must be between 0 and ${
+					totalSteps.value - 1
+				}.`
+			)
 		}
 	}
 
@@ -216,6 +234,7 @@ export function provideMultiStepForm<
 			message: '',
 			fields: {},
 		}
+		manualStepId.value = null
 	}
 
 	async function checkPreviousSteps() {
@@ -271,7 +290,7 @@ export function provideMultiStepForm<
 
 	provide(
 		injectionKey as InjectionKey<MultiStepFormContext<DATA, META>>,
-		context as any,
+		context as any
 	)
 
 	return context
@@ -279,16 +298,16 @@ export function provideMultiStepForm<
 
 export function useMultiStepForm<
 	DATA extends Record<string, any> = Record<string, any>,
-	META extends Record<string, any> = Record<string, any>,
+	META extends Record<string, any> = Record<string, any>
 >(injectionKey: Symbol) {
 	const context = inject(
 		injectionKey as InjectionKey<MultiStepFormContext<DATA, META>>,
-		null,
+		null
 	)
 
 	if (!context) {
 		throw new Error(
-			'MultiStepForm: no context found, did you forget to call provideMultiStepForm?',
+			'MultiStepForm: no context found, did you forget to call provideMultiStepForm?'
 		)
 	}
 

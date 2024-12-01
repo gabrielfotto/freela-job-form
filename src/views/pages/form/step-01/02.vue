@@ -7,9 +7,7 @@ const { goToStep, getPrevStep, getNextStep, progress } = useMultiStepForm(
 	lifeMapStep01FormInjectionKeySymbol
 )
 
-onMounted(() => {
-	console.log('progress', progress.value)
-})
+onMounted(() => {})
 </script>
 
 <template>

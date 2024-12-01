@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { useMultiStepForm } from '@/composables'
-import { lifeMapStep01FormInjectionKeySymbol } from '@/symbols'
+import { lifeMapStep02FormInjectionKeySymbol } from '@/symbols'
 
 const { goToStep, getPrevStep, getNextStep, progress } = useMultiStepForm(
-	lifeMapStep01FormInjectionKeySymbol
+	lifeMapStep02FormInjectionKeySymbol
 )
 
 onMounted(() => {})

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { onBeforeMount, watch } from 'vue'
 import { RouterView } from 'vue-router'
 
 import { provideMultiStepForm } from '@/composables'
@@ -22,6 +22,11 @@ const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 		{ to: '/step-03', meta: { title: 'Fase 04 - Emocional' } },
 	],
 })
+
+onBeforeMount(() => {
+	// lifeMapFormContext.checkPreviousSteps()
+	// console.log('lifeMapFormContext', lifeMapFormContext.getStep())
+})
 </script>
 
 <template>
@@ -37,7 +42,7 @@ const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 					</v-col>
 				</v-row>
 				<v-row>
-					<v-col cols="12" class="px-0">
+					<v-col cols="12">
 						<v-row>
 							<v-col cols="12">
 								<RouterView />
@@ -46,7 +51,7 @@ const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 						<v-row>
 							<v-col cols="12">
 								<v-card elevation="0">
-									<v-card-item>
+									<v-card-item class="px-4">
 										<div class="d-flex align-center">
 											<v-icon class="mr-3 text-grey400">mdi-lock</v-icon>
 											<span class="text-grey400 fs-14"

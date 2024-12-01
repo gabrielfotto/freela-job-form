@@ -40,6 +40,40 @@ const FormRoutes = {
 			],
 		},
 
+		{
+			name: 'Mapa da Vida | Fase 02 - Mental',
+			path: '/step-02',
+			redirect: '/step-02/01',
+			component: () => import('@/views/pages/form/step-02/index.vue'),
+			children: [
+				{
+					name: 'Mapa da Vida | Fase 02 - Mental - Step 01',
+					path: '/step-02/01',
+					component: () => import('@/views/pages/form/step-02/01.vue'),
+				},
+				{
+					name: 'Mapa da Vida | Fase 02 - Mental - Step 02',
+					path: '/step-02/02',
+					component: () => import('@/views/pages/form/step-02/02.vue'),
+				},
+				{
+					name: 'Mapa da Vida | Fase 02 - Mental - Step 03',
+					path: '/step-02/03',
+					component: () => import('@/views/pages/form/step-02/03.vue'),
+				},
+				{
+					name: 'Mapa da Vida | Fase 02 - Mental - Step 04',
+					path: '/step-02/04',
+					component: () => import('@/views/pages/form/step-02/04.vue'),
+				},
+				{
+					name: 'Mapa da Vida | Fase 02 - Mental - Step 05',
+					path: '/step-02/05',
+					component: () => import('@/views/pages/form/step-02/05.vue'),
+				},
+			],
+		},
+
 		// {
 		// 	name: 'Mapa da Vida | Fase 02 - Mental',
 		// 	path: '/step-02',
