@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onBeforeMount, watch } from 'vue'
 import { RouterView } from 'vue-router'
+import { useDisplay } from 'vuetify'
 
 import { provideMultiStepForm } from '@/composables'
 import { useCustomizerStore } from '@/stores/customizer'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols'
 
+const { mdAndUp } = useDisplay()
 const customizer = useCustomizerStore()
 
 const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
@@ -52,7 +54,13 @@ onBeforeMount(() => {
 							<v-col cols="12">
 								<v-card elevation="0">
 									<v-card-item class="px-4">
-										<div class="d-flex align-center">
+										<div
+											:class="[
+												'd-flex',
+												'align-center',
+												mdAndUp ? 'justify-center' : '',
+											]"
+										>
 											<v-icon class="mr-3 text-grey400">mdi-lock</v-icon>
 											<span class="text-grey400 fs-14"
 												>Esta página é segura. Apenas o terapeuta terá acesso às
