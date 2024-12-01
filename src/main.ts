@@ -11,7 +11,7 @@ import VueTablerIcons from 'vue-tabler-icons'
 //Mock Api data
 // import VueDragscroll from "vue-dragscroll";
 
-import Maska from 'maska'
+import { vMaska } from 'maska'
 
 //i18
 import { createI18n } from 'vue-i18n'
@@ -20,9 +20,6 @@ import { registerGlobalComponents } from './plugins/components'
 
 //ScrollTop
 import VueScrollTo from 'vue-scrollto'
-
-//LightBox
-import VueEasyLightbox from 'vue-easy-lightbox'
 
 const i18n = createI18n({
 	locale: 'en',
@@ -34,6 +31,7 @@ const i18n = createI18n({
 const app = createApp(App)
 registerGlobalComponents(app)
 
+app.directive('maska', vMaska)
 app.use(router)
 app.use(PerfectScrollbar)
 // app.use(VueDragscroll);
@@ -42,7 +40,6 @@ app.use(createPinia())
 app.use(VueTablerIcons)
 
 app.use(i18n)
-app.use(Maska)
 app.use(vuetify).mount('#app')
 
 //ScrollTop Use
@@ -51,6 +48,3 @@ app.use(VueScrollTo, {
 	duration: 1000,
 	easing: 'ease',
 })
-
-//Lightbox
-app.use(VueEasyLightbox)

@@ -1,10 +1,7 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import {appsLink} from '@/_mockApis/headerData';
 </script>
 <template>
-    <!-- ---------------------------------------------- -->
-    <!-- apps link -->
-    <!-- ---------------------------------------------- -->
     <v-row>
         <v-col cols="12" lg="6" v-for="(item, i) in appsLink" :key="i">
             <router-link :to="item.href" class="text-decoration-none custom-text-primary">
@@ -20,4 +17,4 @@ import {appsLink} from '@/_mockApis/headerData';
             </router-link>
         </v-col>
     </v-row>
-</template>
+</template> -->

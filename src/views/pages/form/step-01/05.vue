@@ -4,7 +4,7 @@ import { useMultiStepForm } from '@/composables'
 import { lifeMapStep01FormInjectionKeySymbol } from '@/symbols'
 
 const { goToStep, getPrevStep, getNextStep, progress } = useMultiStepForm(
-	lifeMapStep01FormInjectionKeySymbol,
+	lifeMapStep01FormInjectionKeySymbol
 )
 
 onMounted(() => {
@@ -32,19 +32,21 @@ onMounted(() => {
 							:disabled="!getPrevStep"
 							color="#F7F7F7"
 							variant="flat"
-							width="49%"
+							width="49.5%"
 							size="large"
 						>
 							Voltar
 						</v-btn>
+						<div class="mx-1"></div>
 						<v-btn
 							@click="goToStep(getNextStep() as any)"
 							color="primary"
 							variant="flat"
-							width="49%"
+							width="49.5%"
 							size="large"
+							type="submit"
 						>
-							Continuar
+							Finalizar
 						</v-btn>
 					</div>
 				</v-col>

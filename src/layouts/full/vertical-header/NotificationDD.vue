@@ -1,10 +1,7 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import {notifications} from '@/_mockApis/headerData';
 </script>
 <template>
-    <!-- ---------------------------------------------- -->
-    <!-- notifications DD -->
-    <!-- ---------------------------------------------- -->
     <v-menu :close-on-content-click="false">
         <template v-slot:activator="{ props }">
             <v-btn icon variant="text" color="primary" class="custom-hover-primary" v-bind="props">
@@ -41,4 +38,4 @@ import {notifications} from '@/_mockApis/headerData';
             </div>
         </v-sheet>
     </v-menu>
-</template>
+</template> -->

@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { MailIcon } from 'vue-tabler-icons';
-import { profileDD } from '@/_mockApis/headerData';
+// import { profileDD } from '@/_mockApis/headerData';
 
 import { useAuthStore } from '@/stores/auth';
 
@@ -8,9 +8,6 @@ const authStore = useAuthStore();
 </script>
 
 <template>
-    <!-- ---------------------------------------------- -->
-    <!-- notifications DD -->
-    <!-- ---------------------------------------------- -->
     <v-menu :close-on-content-click="false">
         <template v-slot:activator="{ props }">
             <v-btn class="custom-hover-primary" variant="text" v-bind="props" icon>
@@ -67,4 +64,4 @@ const authStore = useAuthStore();
             </div>
         </v-sheet>
     </v-menu>
-</template>
+</template> -->

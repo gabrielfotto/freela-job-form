@@ -12,6 +12,7 @@ export const useAuthStore = defineStore({
 	actions: {
 		async login(username: string, password: string) {},
 		logout() {
+			// @ts-ignore
 			this.user = null
 			router.push('/')
 		},

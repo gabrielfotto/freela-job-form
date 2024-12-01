@@ -22,6 +22,7 @@ const formContext = provideMultiStepForm(lifeMapStep01FormInjectionKeySymbol, {
 		{ to: '/step-01/02', meta: { title: 'Fase 01 - Vida Pessoal | 02' } },
 		{ to: '/step-01/03', meta: { title: 'Fase 01 - Vida Pessoal | 03' } },
 		{ to: '/step-01/04', meta: { title: 'Fase 01 - Vida Pessoal | 04' } },
+		{ to: '/step-01/05', meta: { title: 'Fase 01 - Vida Pessoal | 05' } },
 	],
 })
 
@@ -41,6 +42,10 @@ function hadleRemoveTimelineItemBody() {
 		'.v-timeline-item__body',
 	)
 	timelineItemBodyEls.forEach(el => el.remove())
+}
+
+async function handleSubmitForm() {
+	console.log('lifeMapFormContext', lifeMapFormContext)
 }
 
 onBeforeMount(() => {
@@ -74,7 +79,14 @@ onMounted(() => {
 			</v-timeline>
 		</v-col>
 		<v-col cols="12">
-			<RouterView />
+			<form
+				action=""
+				method="POST"
+				novalidate
+				@submit.prevent="handleSubmitForm"
+			>
+				<RouterView />
+			</form>
 		</v-col>
 	</v-row>
 </template>

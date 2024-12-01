@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref } from 'vue';
 import { languageDD } from '@/_mockApis/headerData';
 import flag1 from '@/assets/images/flag/icon-flag-en.svg';
@@ -7,9 +7,6 @@ import flag3 from '@/assets/images/flag/icon-flag-zh.svg';
 import flag4 from '@/assets/images/flag/icon-flag-fr.svg';
 </script>
 <template>
-    <!-- ---------------------------------------------- -->
-    <!-- language DD -->
-    <!-- ---------------------------------------------- -->
     <v-menu :close-on-content-click="false" location="bottom">
         <template v-slot:activator="{ props }">
             <v-btn icon variant="text" color="primary" v-bind="props">
@@ -44,4 +41,4 @@ import flag4 from '@/assets/images/flag/icon-flag-fr.svg';
             </v-list>
         </v-sheet>
     </v-menu>
-</template>
+</template> -->

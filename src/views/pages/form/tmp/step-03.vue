@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref, onMounted, onBeforeMount } from 'vue'
 import { useMultiStepForm } from '@/composables'
 
@@ -48,4 +48,4 @@ onMounted(() => {})
 			</v-col>
 		</v-row>
 	</v-container>
-</template>
+</template> -->

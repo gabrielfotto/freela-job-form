@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref, onMounted, onBeforeMount } from 'vue'
 import { useMultiStepForm } from '@/composables'
 
@@ -7,7 +7,7 @@ interface StepData {
 }
 
 const { currentStep, checkPreviousSteps, goToStep, getNextStep, getPrevStep } =
-	useMultiStepForm('')
+	useMultiStepForm()
 
 const currentStepData = ref<StepData>({})
 
@@ -38,7 +38,7 @@ onMounted(() => {})
 							:disabled="!getPrevStep"
 							color="#F7F7F7"
 							variant="flat"
-							width="49%"
+							width="49.5%"
 							size="large"
 						>
 							Voltar
@@ -47,7 +47,7 @@ onMounted(() => {})
 							@click="goToStep(getNextStep() as any)"
 							color="primary"
 							variant="flat"
-							width="49%"
+							width="49.5%"
 							size="large"
 						>
 							Continuar
@@ -57,4 +57,4 @@ onMounted(() => {})
 			</v-row>
 		</v-card-actions>
 	</v-card>
-</template>
+</template> -->
