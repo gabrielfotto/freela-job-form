@@ -27,6 +27,16 @@ const FormRoutes = {
 					path: '/step-01/03',
 					component: () => import('@/views/pages/form/step-01/03.vue'),
 				},
+				{
+					name: 'Mapa da Vida | Fase 01 - Vida Pessoal - Step 04',
+					path: '/step-01/04',
+					component: () => import('@/views/pages/form/step-01/04.vue'),
+				},
+				{
+					name: 'Mapa da Vida | Fase 01 - Vida Pessoal - Step 05',
+					path: '/step-01/05',
+					component: () => import('@/views/pages/form/step-01/05.vue'),
+				},
 			],
 		},
 

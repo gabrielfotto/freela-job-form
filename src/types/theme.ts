@@ -1,4 +1,4 @@
-export type ThemeTypes = {
+export type ThemeType = {
 	name: string
 	dark: boolean
 	variables?: object

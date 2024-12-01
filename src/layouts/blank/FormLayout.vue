@@ -26,7 +26,7 @@ const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 
 <template>
 	<v-locale-provider>
-		<v-app :theme="customizer.actTheme">
+		<v-app :theme="customizer.theme">
 			<v-container class="px-3">
 				<v-row>
 					<v-col cols="12" class="px-4">

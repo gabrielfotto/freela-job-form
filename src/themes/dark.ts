@@ -1,6 +1,6 @@
-import type { ThemeTypes } from '@/types'
+import type { ThemeType } from '@/types'
 
-const DARK_BLUE_THEME: ThemeTypes = {
+const DARK_BLUE_THEME: ThemeType = {
 	name: 'DARK_BLUE_THEME',
 	dark: true,
 	variables: {
@@ -35,7 +35,7 @@ const DARK_BLUE_THEME: ThemeTypes = {
 	},
 }
 
-const DARK_AQUA_THEME: ThemeTypes = {
+const DARK_AQUA_THEME: ThemeType = {
 	name: 'DARK_AQUA_THEME',
 	dark: true,
 	variables: {
@@ -70,7 +70,7 @@ const DARK_AQUA_THEME: ThemeTypes = {
 	},
 }
 
-const DARK_PURPLE_THEME: ThemeTypes = {
+const DARK_PURPLE_THEME: ThemeType = {
 	name: 'DARK_PURPLE_THEME',
 	dark: true,
 	variables: {
@@ -105,7 +105,7 @@ const DARK_PURPLE_THEME: ThemeTypes = {
 	},
 }
 
-const DARK_GREEN_THEME: ThemeTypes = {
+const DARK_GREEN_THEME: ThemeType = {
 	name: 'DARK_GREEN_THEME',
 	dark: true,
 	variables: {
@@ -140,7 +140,7 @@ const DARK_GREEN_THEME: ThemeTypes = {
 	},
 }
 
-const DARK_CYAN_THEME: ThemeTypes = {
+const DARK_CYAN_THEME: ThemeType = {
 	name: 'DARK_CYAN_THEME',
 	dark: true,
 	variables: {
@@ -175,7 +175,7 @@ const DARK_CYAN_THEME: ThemeTypes = {
 	},
 }
 
-const DARK_ORANGE_THEME: ThemeTypes = {
+const DARK_ORANGE_THEME: ThemeType = {
 	name: 'DARK_ORANGE_THEME',
 	dark: true,
 	variables: {

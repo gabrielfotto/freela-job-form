@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeMount, computed } from 'vue'
+import { ref, onMounted, onBeforeMount } from 'vue'
 import { RouterView } from 'vue-router'
 
 import { provideMultiStepForm, useMultiStepForm } from '@/composables'
@@ -25,6 +25,17 @@ const formContext = provideMultiStepForm(lifeMapStep01FormInjectionKeySymbol, {
 	],
 })
 
+function getTimelineDotColor(stepId: number, index: number) {
+	if (
+		formContext.currentStepId.value > index ||
+		formContext.currentStepId.value === stepId
+	) {
+		return 'primary'
+	} else {
+		return '#D9D9D9' // TODO: colocar no arquivo de tema
+	}
+}
+
 function hadleRemoveTimelineItemBody() {
 	const timelineItemBodyEls = document.querySelectorAll(
 		'.v-timeline-item__body',
@@ -45,11 +56,20 @@ onMounted(() => {
 	<v-row>
 		<v-col cols="12">
 			<v-timeline direction="horizontal" density="compact">
-				<v-timeline-item dot-color="primary" size="small" icon="mdi-check">
-				</v-timeline-item>
-				<v-timeline-item dot-color="primary" size="small" icon="mdi-check">
-				</v-timeline-item>
-				<v-timeline-item dot-color="primary" size="small" icon="mdi-check">
+				<v-timeline-item
+					v-for="(step, index) in formContext.steps.value"
+					size="small"
+					:dot-color="getTimelineDotColor(step.id, index)"
+				>
+					<template #icon>
+						<v-icon v-if="formContext.currentStepId.value > index" size="small"
+							>mdi-check</v-icon
+						>
+						<span v-else-if="formContext.currentStepId.value === step.id">{{
+							index + 1
+						}}</span>
+						<span v-else>{{ index + 1 }}</span>
+					</template>
 				</v-timeline-item>
 			</v-timeline>
 		</v-col>
