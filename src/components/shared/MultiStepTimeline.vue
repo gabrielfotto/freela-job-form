@@ -18,10 +18,10 @@ function getTimelineDotColor(stepId: number, index: number) {
 }
 
 function handleRemoveTimelineItemBody() {
-	const timelineItemBodyEls = document.querySelectorAll(
-		'.v-timeline-item__body'
-	)
-	timelineItemBodyEls.forEach(el => el.remove())
+	// const timelineItemBodyEls = document.querySelectorAll(
+	// 	'.v-timeline-item__body'
+	// )
+	// timelineItemBodyEls.forEach(el => el.remove())
 }
 
 onMounted(() => {
