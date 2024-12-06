@@ -51,7 +51,9 @@ const handleSubmitForm = handleSubmit(async () => {
 					por favor, responda as perguntas a seguir:</span
 				>
 				<v-divider class="my-6"></v-divider>
-				<span class="text-h6 mb-2">Qual a sua queixa principal?</span>
+				<span class="font-weight-medium mb-2"
+					>Qual a sua queixa principal?</span
+				>
 				<v-textarea
 					v-model="mainComplaint"
 					placeholder="Descreva aqui suas principais queixas"
@@ -59,7 +61,7 @@ const handleSubmitForm = handleSubmit(async () => {
 					color="primary"
 				/>
 				<v-divider class="my-6"></v-divider>
-				<span class="text-h6 mb-2"
+				<span class="font-weight-medium mb-2"
 					>O quanto você se sente feliz com a sua vida hoje?</span
 				>
 				<div class="d-flex align-center">
