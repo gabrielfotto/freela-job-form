@@ -6,7 +6,6 @@ import { useLocalStorage } from '@vueuse/core'
 
 import { useMultiStepForm } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
-import type { Step01 } from '@/types'
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
@@ -20,7 +19,7 @@ const formGroupLocalAnswers = useLocalStorage(
 	}
 )
 
-const validationSchema = yup.object<Step01>({
+const validationSchema = yup.object({
 	mainComplaint: yup.string().required('Campo obrigatório'),
 	lifeSatisfactionLevel: yup.number().required('Campo obrigatório'),
 })
