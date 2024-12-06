@@ -13,11 +13,14 @@ const customizer = useCustomizerStore()
 const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 	initialState: {},
 	steps: [
-		{ to: '/form/steps/01', meta: { title: 'Fase 01 - Vida Pessoal' } },
-		{ to: '/form/steps/02', meta: { title: 'Fase 02 - Mental' } },
-		{ to: '/form/steps/03', meta: { title: 'Fase 03 - Infância' } },
-		{ to: '/form/steps/04', meta: { title: 'Fase 04 - Emocional' } },
-		{ to: '/form/steps/05', meta: { title: 'Fase 04 - Emocional' } },
+		{ to: '/form/steps/01', meta: { title: '01 - Queixa Principal' } },
+		{
+			to: '/form/steps/02',
+			meta: { title: '02 - Experiência ao Longo da Vida' },
+		},
+		{ to: '/form/steps/03', meta: { title: '03 - Transtornos Atuais' } },
+		{ to: '/form/steps/04', meta: { title: '04 - Corpo Físico' } },
+		{ to: '/form/steps/05', meta: { title: '05 - Medos Futuros' } },
 	],
 })
 
@@ -42,18 +45,18 @@ onBeforeMount(() => {
 						</div>
 					</v-col>
 				</v-row>
-				<v-col cols="12" class="px-0">
+				<v-col cols="12">
 					<MultiStepTimeline :form-context="lifeMapFormContext" />
 				</v-col>
 				<v-row>
 					<v-col cols="12">
 						<v-row>
-							<v-col cols="12" class="px-0">
+							<v-col cols="12">
 								<RouterView />
 							</v-col>
 						</v-row>
 						<v-row>
-							<v-col cols="12" class="px-0">
+							<v-col cols="12">
 								<v-card elevation="0" class="rounded-xl-i">
 									<v-card-item class="px-4 justify-center">
 										<div

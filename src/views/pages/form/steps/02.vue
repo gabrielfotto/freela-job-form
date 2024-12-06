@@ -2,28 +2,87 @@
 import { computed, onBeforeMount, onMounted } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
+
+import { useDisplay } from 'vuetify'
 import { useLocalStorage } from '@vueuse/core'
 
 import { useMultiStepForm } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
+const { mobile } = useDisplay()
+
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
-const CURRENT_STEP_ID = 1
+const currentStepId = 2
+
+const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+const defaultValues = {
+	abandonment: {
+		checked: false,
+		level: null,
+	},
+	sexualAbuse: {
+		checked: false,
+		level: null,
+	},
+	verbalAbuse: {
+		checked: false,
+		level: null,
+	},
+	familyConflicts: {
+		checked: false,
+		level: null,
+	},
+	despair: {
+		checked: false,
+		level: null,
+	},
+	financialDifficulties: {
+		checked: false,
+		level: null,
+	},
+	humiliations: {
+		checked: false,
+		level: null,
+	},
+	trauma: {
+		checked: false,
+		level: null,
+	},
+	violence: {
+		checked: false,
+		level: null,
+	},
+}
 
 const formGroupLocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}`,
-	{
-		[CURRENT_STEP_ID]: {} as any,
-	}
+	`${lifeMapFormInjectionKeySymbol.description}:${currentStepId}`,
+	defaultValues
 )
 
-const initialValues = computed<{
-	text: string
-}>(() => formGroupLocalAnswers.value[CURRENT_STEP_ID])
+const initialValues = computed(() => ({
+	...defaultValues,
+	...formGroupLocalAnswers.value,
+}))
 
 const validationSchema = yup.object({
-	text: yup.string().required('Campo obrigatório'),
+	// familyConflicts: yup.object({
+	// 	checked: yup.boolean().nullable(),
+	// 	level: yup
+	// 		.number()
+	// 		.nullable()
+	// 		.min(1, 'Deve ser um número entre 1 e 10')
+	// 		.max(10, 'Deve ser um número entre 1 e 10'),
+	// }),
+	// trauma: yup.object({
+	// 	checked: yup.boolean().nullable(),
+	// 	level: yup
+	// 		.number()
+	// 		.nullable()
+	// 		.min(1, 'Deve ser um número entre 1 e 10')
+	// 		.max(10, 'Deve ser um número entre 1 e 10'),
+	// }),
 })
 
 const { meta, values, setValues, defineField, handleSubmit } = useForm({
@@ -31,34 +90,227 @@ const { meta, values, setValues, defineField, handleSubmit } = useForm({
 	initialValues: initialValues.value,
 })
 
-const [text] = defineField('text')
+const [abandonment] = defineField('abandonment')
+const [sexualAbuse] = defineField('sexualAbuse')
+const [verbalAbuse] = defineField('verbalAbuse')
+const [familyConflicts] = defineField('familyConflicts')
+const [despair] = defineField('despair')
+const [financialDifficulties] = defineField('financialDifficulties')
+const [humiliations] = defineField('humiliations')
+const [trauma] = defineField('trauma')
+const [violence] = defineField('violence')
 
 const handleSubmitForm = handleSubmit(async () => {
-	formGroupLocalAnswers.value[CURRENT_STEP_ID] = {
-		...formGroupLocalAnswers.value[CURRENT_STEP_ID],
+	formGroupLocalAnswers.value = {
 		...values,
 	}
 
-	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
+	// await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
+
+const colsClasses = computed(() => (mobile ? ['pt-0'] : ['pt-3']))
 </script>
 
 <template>
-	<v-card elevation="10" class="rounded-xl">
+	<v-card elevation="10" class="rounded-xl-i">
 		<v-card-item class="px-4">
-			<div class="d-flex flex-column">
-				<span class="mb-2 font-weight-medium"
-					>É casada(o), solteira(o) ou divorciada(o) - VOCÊ É FELIZ ASSIM?</span
+			<v-row>
+				<v-col cols="12">
+					<div class="d-flex flex-column">
+						<span class="text-h4 mb-2">
+							Você já vivenciou alguma dessas experiências ao longo da sua vida?
+						</span>
+						<span class="text-grey400">
+							Dentre os temas listados abaixo, selecione aqueles que você deseja
+							tratar na terapia:
+						</span>
+					</div>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox
+						v-model="abandonment.checked"
+						color="primary"
+						hide-details
+					>
+						<template #label>
+							<span class="text-h6 font-weight-medium">Abandono</span>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col v-if="abandonment.checked" cols="12" md="4" :class="colsClasses">
+					<v-select
+						v-model="abandonment.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox
+						v-model="sexualAbuse.checked"
+						color="primary"
+						hide-details
+					>
+						<template #label>
+							<span class="text-h6 font-weight-medium">Abusos Sexuais</span>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col v-if="sexualAbuse.checked" cols="12" md="4" :class="colsClasses">
+					<v-select
+						v-model="sexualAbuse.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox
+						v-model="verbalAbuse.checked"
+						color="primary"
+						hide-details
+					>
+						<template #label>
+							<span class="text-h6 font-weight-medium">Abusos Verbais</span>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col v-if="verbalAbuse.checked" cols="12" md="4" :class="colsClasses">
+					<v-select
+						v-model="verbalAbuse.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox
+						v-model="familyConflicts.checked"
+						color="primary"
+						hide-details
+					>
+						<template #label>
+							<span class="text-h6 font-weight-medium"
+								>Conflitos Familiares</span
+							>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col
+					v-if="familyConflicts.checked"
+					cols="12"
+					md="4"
+					:class="colsClasses"
 				>
-				<v-textarea
-					v-model="text"
-					placeholder="Escreva aqui..."
-					variant="outlined"
-					color="primary"
-				/>
-			</div>
+					<v-select
+						v-model="familyConflicts.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox v-model="despair.checked" color="primary" hide-details>
+						<template #label>
+							<span class="text-h6 font-weight-medium">Desespero</span>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col v-if="despair.checked" cols="12" md="4" :class="colsClasses">
+					<v-select
+						v-model="despair.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox
+						v-model="financialDifficulties.checked"
+						color="primary"
+						hide-details
+					>
+						<template #label>
+							<span class="text-h6 font-weight-medium"
+								>Dificuldades Financeiras</span
+							>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col v-if="financialDifficulties.checked" col="12" md="4">
+					<v-select
+						v-model="financialDifficulties.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox
+						v-model="humiliations.checked"
+						color="primary"
+						hide-details
+					>
+						<template #label>
+							<span class="text-h6 font-weight-medium">Humilhações</span>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col
+					v-if="humiliations.checked"
+					cols="12"
+					md="4"
+					:class="colsClasses"
+				>
+					<v-select
+						v-model="humiliations.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox v-model="trauma.checked" color="primary" hide-details>
+						<template #label>
+							<span class="text-h6 font-weight-medium">Traumas</span>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col v-if="trauma.checked" cols="12" md="4" :class="colsClasses">
+					<v-select
+						v-model="trauma.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider></v-divider>
+				<v-col cols="12" md="4">
+					<v-checkbox v-model="violence.checked" color="primary" hide-details>
+						<template #label>
+							<span class="text-h6 font-weight-medium">Violência</span>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col v-if="violence.checked" cols="12" md="4" :class="colsClasses">
+					<v-select
+						v-model="violence.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+			</v-row>
 		</v-card-item>
-		<v-card-actions class="px-4">
+		<v-card-actions class="px-4 pb-10">
 			<v-row>
 				<v-col>
 					<div class="d-flex align-center justify-center">
@@ -70,8 +322,8 @@ const handleSubmitForm = handleSubmit(async () => {
 								)
 							"
 							:disabled="!lifeMapFormContext.getPrevStep()"
-							color="#F7F7F7"
-							variant="flat"
+							color="primary"
+							variant="outlined"
 							width="49.5%"
 							size="large"
 						>
@@ -85,6 +337,7 @@ const handleSubmitForm = handleSubmit(async () => {
 							size="large"
 							:disabled="!meta.valid"
 							:width="!lifeMapFormContext.getPrevStep() ? '100%' : '49%'"
+							class="rounded-xl-i"
 						>
 							Continuar
 						</v-btn>

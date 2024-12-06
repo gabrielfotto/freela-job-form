@@ -6,36 +6,35 @@ import { useLocalStorage } from '@vueuse/core'
 
 import { useMultiStepForm } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
+import type { Step01 } from '@/types'
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
-const CURRENT_STEP_ID = 1
+const currentStepId = 1
 
 const formGroupLocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}`,
+	`${lifeMapFormInjectionKeySymbol.description}:${currentStepId}`,
 	{
-		[CURRENT_STEP_ID]: {} as any,
+		mainComplaint: '',
+		lifeSatisfactionLevel: null,
 	}
 )
 
-const initialValues = computed<{
-	text: string
-}>(() => formGroupLocalAnswers.value[CURRENT_STEP_ID])
-
-const validationSchema = yup.object({
-	text: yup.string().required('Campo obrigatório'),
+const validationSchema = yup.object<Step01>({
+	mainComplaint: yup.string().required('Campo obrigatório'),
+	lifeSatisfactionLevel: yup.number().required('Campo obrigatório'),
 })
 
 const { meta, values, setValues, defineField, handleSubmit } = useForm({
 	validationSchema,
-	initialValues: initialValues.value,
+	initialValues: formGroupLocalAnswers.value,
 })
 
-const [text] = defineField('text')
+const [mainComplaint] = defineField('mainComplaint')
+const [lifeSatisfactionLevel] = defineField('lifeSatisfactionLevel')
 
 const handleSubmitForm = handleSubmit(async () => {
-	formGroupLocalAnswers.value[CURRENT_STEP_ID] = {
-		...formGroupLocalAnswers.value[CURRENT_STEP_ID],
+	formGroupLocalAnswers.value = {
 		...values,
 	}
 
@@ -48,15 +47,15 @@ const handleSubmitForm = handleSubmit(async () => {
 		<v-card-item class="px-4">
 			<div class="d-flex flex-column">
 				<span class="text-h4 mb-2">O que te trouxe até aqui hoje?</span>
-				<span
+				<span class="text-grey400"
 					>Para que seu terapeuta possa trazer o melhor atendimento para você,
 					por favor, responda as perguntas a seguir:</span
 				>
 				<v-divider class="my-6"></v-divider>
 				<span class="text-h6 mb-2">Qual a sua queixa principal?</span>
 				<v-textarea
-					v-model="text"
-					placeholder="Escreva aqui..."
+					v-model="mainComplaint"
+					placeholder="Descreva aqui suas principais queixas"
 					variant="outlined"
 					color="primary"
 				/>
@@ -66,16 +65,21 @@ const handleSubmitForm = handleSubmit(async () => {
 				>
 				<div class="d-flex align-center">
 					<v-select
+						v-model="lifeSatisfactionLevel"
 						:items="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
 						placeholder="Selecione o grau de felicidade"
 					></v-select>
-					<v-tooltip>
+					<v-tooltip location="left" max-width="250">
 						<template #activator="{ props }">
 							<v-icon v-bind="props" class="text-grey400 ml-4 mb-5"
 								>mdi-information-outline</v-icon
 							>
 						</template>
-						<span></span>
+						<span
+							>O grau de felicidade é medido em uma escala de 0 a 10. Onde zero
+							(0) é a ausência de felicidade e dez (10) é a felicidade de forte
+							intensidade</span
+						>
 					</v-tooltip>
 				</div>
 			</div>
@@ -93,8 +97,8 @@ const handleSubmitForm = handleSubmit(async () => {
 								)
 							"
 							:disabled="!lifeMapFormContext.getPrevStep()"
-							color="#F7F7F7"
-							variant="flat"
+							color="primary"
+							variant="outlined"
 							width="49.5%"
 							size="large"
 						>
