@@ -51,6 +51,7 @@ const step05 = computed(() => FORM_STEPS[step05Id])
 
 function getFieldValue(type, stepId, key) {
 	const value = formStepsData[stepId][key]
+	if (stepId === 0) return value
 	if (type === 'select') return value.level
 	return value
 }
@@ -76,7 +77,7 @@ function getFieldValue(type, stepId, key) {
 								field.name
 							}}</span>
 							<span v-if="field.type === 'text'" class="text-grey400">{{
-								getFieldValue(field.type, 0, field.key)
+								getFieldValue(field.type, step01Id, field.key)
 							}}</span>
 							<div v-else-if="field.type === 'select'">
 								<v-chip>
