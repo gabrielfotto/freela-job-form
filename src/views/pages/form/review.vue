@@ -101,7 +101,7 @@ function getFieldValue(type, stepId, key) {
 								step02.meta.title
 							}}</span>
 							<v-chip-group column>
-								<div v-for="field in step02.fields">
+								<template v-for="field in step02.fields">
 									<v-chip v-if="getFieldValue(field.type, step02Id, field.key)">
 										<span>{{ field.name }}</span>
 										<template #append>
@@ -110,7 +110,7 @@ function getFieldValue(type, stepId, key) {
 											</div>
 										</template>
 									</v-chip>
-								</div>
+								</template>
 							</v-chip-group>
 						</div>
 						<v-divider class="mt-6"></v-divider>
@@ -124,7 +124,7 @@ function getFieldValue(type, stepId, key) {
 								step03.meta.title
 							}}</span>
 							<v-chip-group column>
-								<div v-for="field in step03.fields">
+								<template v-for="field in step03.fields">
 									<v-chip v-if="getFieldValue(field.type, step03Id, field.key)">
 										<span>{{ field.name }}</span>
 										<template #append>
@@ -133,7 +133,7 @@ function getFieldValue(type, stepId, key) {
 											</div>
 										</template>
 									</v-chip>
-								</div>
+								</template>
 							</v-chip-group>
 						</div>
 						<v-divider class="mt-6"></v-divider>
@@ -147,7 +147,7 @@ function getFieldValue(type, stepId, key) {
 								step04.meta.title
 							}}</span>
 							<v-chip-group column>
-								<div v-for="field in step04.fields">
+								<template v-for="field in step04.fields">
 									<v-chip v-if="getFieldValue(field.type, step04Id, field.key)">
 										<span>{{ field.name }}</span>
 										<template #append>
@@ -156,7 +156,7 @@ function getFieldValue(type, stepId, key) {
 											</div>
 										</template>
 									</v-chip>
-								</div>
+								</template>
 							</v-chip-group>
 						</div>
 						<v-divider class="mt-6"></v-divider>
@@ -170,7 +170,7 @@ function getFieldValue(type, stepId, key) {
 								step05.meta.title
 							}}</span>
 							<v-chip-group column>
-								<div v-for="field in step05.fields">
+								<template v-for="field in step05.fields">
 									<v-chip v-if="getFieldValue(field.type, step05Id, field.key)">
 										<span>{{ field.name }}</span>
 										<template #append>
@@ -179,7 +179,7 @@ function getFieldValue(type, stepId, key) {
 											</div>
 										</template>
 									</v-chip>
-								</div>
+								</template>
 							</v-chip-group>
 						</div>
 						<v-divider class="mt-6"></v-divider>

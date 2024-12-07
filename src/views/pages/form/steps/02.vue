@@ -106,8 +106,6 @@ const handleSubmitForm = handleSubmit(async () => {
 
 	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
-
-const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 </script>
 
 <template>
@@ -137,7 +135,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="abandonment.checked" cols="12" md="4">
+				<v-col
+					v-if="abandonment.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="abandonment.level"
 						:items="levels"
@@ -157,7 +160,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="sexualAbuse.checked" cols="12" md="4">
+				<v-col
+					v-if="sexualAbuse.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="sexualAbuse.level"
 						:items="levels"
@@ -177,7 +185,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="verbalAbuse.checked" cols="12" md="4">
+				<v-col
+					v-if="verbalAbuse.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="verbalAbuse.level"
 						:items="levels"
@@ -199,7 +212,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="familyConflicts.checked" cols="12" md="4">
+				<v-col
+					v-if="familyConflicts.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="familyConflicts.level"
 						:items="levels"
@@ -215,7 +233,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="despair.checked" cols="12" md="4">
+				<v-col
+					v-if="despair.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="despair.level"
 						:items="levels"
@@ -237,7 +260,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="financialDifficulties.checked" col="12" md="4">
+				<v-col
+					v-if="financialDifficulties.checked"
+					col="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="financialDifficulties.level"
 						:items="levels"
@@ -257,7 +285,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="humiliations.checked" cols="12" md="4">
+				<v-col
+					v-if="humiliations.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="humiliations.level"
 						:items="levels"
@@ -273,7 +306,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="trauma.checked" cols="12" md="4">
+				<v-col
+					v-if="trauma.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="trauma.level"
 						:items="levels"
@@ -289,7 +327,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="violence.checked" cols="12" md="4">
+				<v-col
+					v-if="violence.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="violence.level"
 						:items="levels"

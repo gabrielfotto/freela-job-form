@@ -30,7 +30,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<v-timeline direction="horizontal" density="compact">
+	<v-timeline direction="horizontal" density="compact" class="mb-2">
 		<v-timeline-item
 			v-for="(step, index) in props.formContext.steps.value"
 			size="small"

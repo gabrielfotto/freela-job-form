@@ -126,7 +126,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="abandonment.checked" cols="12" md="4">
+				<v-col
+					v-if="abandonment.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="abandonment.level"
 						:items="levels"
@@ -142,7 +147,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="illnesses.checked" cols="12" md="4">
+				<v-col
+					v-if="illnesses.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="illnesses.level"
 						:items="levels"
@@ -158,7 +168,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="death.checked" cols="12" md="4">
+				<v-col
+					v-if="death.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="death.level"
 						:items="levels"
@@ -174,7 +189,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="poverty.checked" cols="12" md="4">
+				<v-col
+					v-if="poverty.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="poverty.level"
 						:items="levels"
@@ -190,7 +210,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="loneliness.checked" cols="12" md="4">
+				<v-col
+					v-if="loneliness.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="loneliness.level"
 						:items="levels"
@@ -206,7 +231,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="oldAge.checked" cols="12" md="4">
+				<v-col
+					v-if="oldAge.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="oldAge.level"
 						:items="levels"

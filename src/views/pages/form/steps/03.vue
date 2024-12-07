@@ -231,8 +231,6 @@ const handleSubmitForm = handleSubmit(async () => {
 
 	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
-
-const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 </script>
 
 <template>
@@ -258,7 +256,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="alcoholism.checked" cols="12" md="4">
+				<v-col
+					v-if="alcoholism.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="alcoholism.level"
 						:items="levels"
@@ -274,7 +277,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="anguish.checked" cols="12" md="4">
+				<v-col
+					v-if="anguish.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="anguish.level"
 						:items="levels"
@@ -290,7 +298,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="anorexia.checked" cols="12" md="4">
+				<v-col
+					v-if="anorexia.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="anorexia.level"
 						:items="levels"
@@ -306,7 +319,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="anxiety.checked" cols="12" md="4">
+				<v-col
+					v-if="anxiety.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="anxiety.level"
 						:items="levels"
@@ -326,7 +344,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="lowSelfEsteem.checked" cols="12" md="4">
+				<v-col
+					v-if="lowSelfEsteem.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="lowSelfEsteem.level"
 						:items="levels"
@@ -342,7 +365,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="borderline.checked" cols="12" md="4">
+				<v-col
+					v-if="borderline.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="borderline.level"
 						:items="levels"
@@ -358,7 +386,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="bulimia.checked" cols="12" md="4">
+				<v-col
+					v-if="bulimia.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="bulimia.level"
 						:items="levels"
@@ -374,7 +407,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="burnout.checked" cols="12" md="4">
+				<v-col
+					v-if="burnout.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="burnout.level"
 						:items="levels"
@@ -394,7 +432,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="excessiveJealousy.checked" cols="12" md="4">
+				<v-col
+					v-if="excessiveJealousy.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="excessiveJealousy.level"
 						:items="levels"
@@ -416,7 +459,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="bingeEating.checked" cols="12" md="4">
+				<v-col
+					v-if="bingeEating.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="bingeEating.level"
 						:items="levels"
@@ -436,7 +484,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="sexualCompulsion.checked" cols="12" md="4">
+				<v-col
+					v-if="sexualCompulsion.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="sexualCompulsion.level"
 						:items="levels"
@@ -452,7 +505,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="depression.checked" cols="12" md="4">
+				<v-col
+					v-if="depression.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="depression.level"
 						:items="levels"
@@ -468,7 +526,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="despair.checked" col="12" md="4">
+				<v-col
+					v-if="despair.checked"
+					col="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="despair.level"
 						:items="levels"
@@ -488,7 +551,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="erectileDysfunction.checked" cols="12" md="4">
+				<v-col
+					v-if="erectileDysfunction.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="erectileDysfunction.level"
 						:items="levels"
@@ -510,7 +578,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="financialScarcity.checked" cols="12" md="4">
+				<v-col
+					v-if="financialScarcity.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="financialScarcity.level"
 						:items="levels"
@@ -530,7 +603,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="lackOfLibido.checked" cols="12" md="4">
+				<v-col
+					v-if="lackOfLibido.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="lackOfLibido.level"
 						:items="levels"
@@ -546,7 +624,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="phobias.checked" cols="12" md="4">
+				<v-col
+					v-if="phobias.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="phobias.level"
 						:items="levels"
@@ -562,7 +645,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="failure.checked" cols="12" md="4">
+				<v-col
+					v-if="failure.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="failure.level"
 						:items="levels"
@@ -578,7 +666,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="frigidity.checked" cols="12" md="4">
+				<v-col
+					v-if="frigidity.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="frigidity.level"
 						:items="levels"
@@ -594,7 +687,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="insecurity.checked" cols="12" md="4">
+				<v-col
+					v-if="insecurity.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="insecurity.level"
 						:items="levels"
@@ -610,7 +708,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="fears.checked" cols="12" md="4">
+				<v-col
+					v-if="fears.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="fears.level"
 						:items="levels"
@@ -626,7 +729,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="moodSwing.checked" cols="12" md="4">
+				<v-col
+					v-if="moodSwing.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="moodSwing.level"
 						:items="levels"
@@ -642,7 +750,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="panic.checked" cols="12" md="4">
+				<v-col
+					v-if="panic.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="panic.level"
 						:items="levels"
@@ -662,7 +775,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="uncontrolledAnger.checked" cols="12" md="4">
+				<v-col
+					v-if="uncontrolledAnger.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="uncontrolledAnger.level"
 						:items="levels"
@@ -678,7 +796,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="remorse.checked" cols="12" md="4">
+				<v-col
+					v-if="remorse.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="remorse.level"
 						:items="levels"
@@ -700,7 +823,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="feelingOfGuilt.checked" cols="12" md="4">
+				<v-col
+					v-if="feelingOfGuilt.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="feelingOfGuilt.level"
 						:items="levels"
@@ -716,7 +844,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="loneliness.checked" cols="12" md="4">
+				<v-col
+					v-if="loneliness.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="loneliness.level"
 						:items="levels"
@@ -732,7 +865,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="toc.checked" cols="12" md="4">
+				<v-col
+					v-if="toc.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="toc.level"
 						:items="levels"
@@ -754,7 +892,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="deepSadness.checked" cols="12" md="4">
+				<v-col
+					v-if="deepSadness.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="deepSadness.level"
 						:items="levels"
@@ -770,7 +913,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="shame.checked" cols="12" md="4">
+				<v-col
+					v-if="shame.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="shame.level"
 						:items="levels"
@@ -788,7 +936,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="bodyShame.checked" cols="12" md="4">
+				<v-col
+					v-if="bodyShame.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="bodyShame.level"
 						:items="levels"
@@ -808,7 +961,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="drugAddictions.checked" cols="12" md="4">
+				<v-col
+					v-if="drugAddictions.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="drugAddictions.level"
 						:items="levels"
@@ -828,7 +986,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="gamingAddictions.checked" cols="12" md="4">
+				<v-col
+					v-if="gamingAddictions.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="gamingAddictions.level"
 						:items="levels"

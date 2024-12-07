@@ -113,7 +113,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="allergies.checked" cols="12" md="4">
+				<v-col
+					v-if="allergies.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="allergies.level"
 						:items="levels"
@@ -133,7 +138,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="skinDiseases.checked" cols="12" md="4">
+				<v-col
+					v-if="skinDiseases.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="skinDiseases.level"
 						:items="levels"
@@ -153,7 +163,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="autoimmuneDiseases.checked" cols="12" md="4">
+				<v-col
+					v-if="autoimmuneDiseases.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="autoimmuneDiseases.level"
 						:items="levels"
@@ -169,7 +184,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="headache.checked" cols="12" md="4">
+				<v-col
+					v-if="headache.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="headache.level"
 						:items="levels"
@@ -189,7 +209,12 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						</template>
 					</v-checkbox>
 				</v-col>
-				<v-col v-if="fibromyalgia.checked" cols="12" md="4">
+				<v-col
+					v-if="fibromyalgia.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
 					<v-select
 						v-model="fibromyalgia.level"
 						:items="levels"
