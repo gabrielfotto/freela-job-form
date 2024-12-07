@@ -4,9 +4,10 @@ import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 import { useLocalStorage } from '@vueuse/core'
 
-import { useMultiStepForm } from '@/composables'
+import { useMultiStepForm, useScrollToTop } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
+useScrollToTop()
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
 const formGroupLocalAnswers = useLocalStorage(

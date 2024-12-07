@@ -3,7 +3,10 @@ import { ref, computed } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols'
 
+import { useScrollToTop } from '@/composables'
 import { FORM_STEPS } from '@/constants'
+
+useScrollToTop()
 
 const step01Id = 0
 const step02Id = 1
@@ -76,7 +79,14 @@ function getFieldValue(type, stepId, key) {
 								getFieldValue(field.type, 0, field.key)
 							}}</span>
 							<div v-else-if="field.type === 'select'">
-								<v-chip>{{ field.name }}</v-chip>
+								<v-chip>
+									<span>{{ field.name }}</span>
+									<template #append>
+										<div class="rounded-xl bg-primary ml-3 px-2">
+											{{ getFieldValue(field.type, step01Id, field.key) }}
+										</div>
+									</template>
+								</v-chip>
 							</div>
 						</div>
 					</v-col>

@@ -7,9 +7,10 @@ import { useRouter } from 'vue-router'
 import { useDisplay } from 'vuetify'
 import { useLocalStorage } from '@vueuse/core'
 
-import { useMultiStepForm } from '@/composables'
+import { useMultiStepForm, useScrollToTop } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
+useScrollToTop()
 const router = useRouter()
 const { mobile } = useDisplay()
 

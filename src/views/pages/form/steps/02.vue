@@ -6,9 +6,10 @@ import * as yup from 'yup'
 import { useDisplay } from 'vuetify'
 import { useLocalStorage } from '@vueuse/core'
 
-import { useMultiStepForm } from '@/composables'
+import { useMultiStepForm, useScrollToTop } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
+useScrollToTop()
 const { mobile } = useDisplay()
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
