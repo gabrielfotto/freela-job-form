@@ -52,7 +52,8 @@ const step05 = computed(() => FORM_STEPS[step05Id])
 function getFieldValue(type, stepId, key) {
 	const value = formStepsData[stepId][key]
 	if (stepId === 0) return value
-	if (type === 'select') return value.level
+	if (type === 'select' && value.checked) return value.level
+	else if (type === 'select' && !value.checked) return null
 	return value
 }
 </script>
@@ -189,7 +190,7 @@ function getFieldValue(type, stepId, key) {
 				<v-row class="mb-10">
 					<v-col cols="12">
 						<div class="d-flex flex-column">
-							<v-btn block color="primary" size="large"
+							<v-btn block color="primary" size="large" variant="flat"
 								>Receber Resultado</v-btn
 							>
 							<v-btn
