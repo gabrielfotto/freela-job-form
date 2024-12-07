@@ -9,10 +9,8 @@ import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
-const currentStepId = 1
-
 const formGroupLocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}:${currentStepId}`,
+	`${lifeMapFormInjectionKeySymbol.description}:${lifeMapFormContext.currentStepId.value}`,
 	{
 		mainComplaint: '',
 		lifeSatisfactionLevel: null,

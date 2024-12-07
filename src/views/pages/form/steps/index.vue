@@ -6,22 +6,14 @@ import { useDisplay } from 'vuetify'
 import { provideMultiStepForm } from '@/composables'
 import { useCustomizerStore } from '@/stores/customizer'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols'
+import { FORM_STEPS } from '@/constants'
 
 const { mdAndUp } = useDisplay()
 const customizer = useCustomizerStore()
 
 const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 	initialState: {},
-	steps: [
-		{ to: '/form/steps/01', meta: { title: '01 - Queixa Principal' } },
-		{
-			to: '/form/steps/02',
-			meta: { title: '02 - Experiência ao Longo da Vida' },
-		},
-		{ to: '/form/steps/03', meta: { title: '03 - Transtornos Atuais' } },
-		{ to: '/form/steps/04', meta: { title: '04 - Corpo Físico' } },
-		{ to: '/form/steps/05', meta: { title: '05 - Medos Futuros' } },
-	],
+	steps: FORM_STEPS,
 })
 
 onBeforeMount(() => {

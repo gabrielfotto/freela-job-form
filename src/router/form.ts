@@ -7,8 +7,8 @@ const FormRoutes = {
 			name: 'Index',
 			path: '/form',
 			component: () => import('@/views/pages/form/index.vue'),
+			children: [],
 		},
-
 		{
 			name: 'Formulário Mapa da Vida',
 			path: '/form/steps',
@@ -41,6 +41,21 @@ const FormRoutes = {
 					component: () => import('@/views/pages/form/steps/05.vue'),
 				},
 			],
+		},
+		{
+			name: 'Review',
+			path: '/form/review',
+			component: () => import('@/views/pages/form/review.vue'),
+		},
+		{
+			name: 'Confirmation',
+			path: '/form/confirmation',
+			component: () => import('@/views/pages/form/confirmation.vue'),
+		},
+		{
+			name: 'Result',
+			path: '/form/result',
+			component: () => import('@/views/pages/form/result.vue'),
 		},
 
 		// {

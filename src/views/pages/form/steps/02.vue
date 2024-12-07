@@ -13,8 +13,6 @@ const { mobile } = useDisplay()
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
-const currentStepId = 2
-
 const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const defaultValues = {
@@ -57,7 +55,7 @@ const defaultValues = {
 }
 
 const formGroupLocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}:${currentStepId}`,
+	`${lifeMapFormInjectionKeySymbol.description}:${lifeMapFormContext.currentStepId.value}`,
 	defaultValues
 )
 
@@ -105,7 +103,7 @@ const handleSubmitForm = handleSubmit(async () => {
 		...values,
 	}
 
-	// await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
+	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
 
 const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
