@@ -39,9 +39,6 @@ onBeforeMount(() => {
 						<div class="d-flex justify-space-between align-center">
 							<!-- <TrgClubLogo /> -->
 							<span class="text-h3 font-weight-medium">Mapa da Vida</span>
-							<span class="text-h6 font-weight-medium text-grey400"
-								>Formulário</span
-							>
 						</div>
 					</v-col>
 				</v-row>

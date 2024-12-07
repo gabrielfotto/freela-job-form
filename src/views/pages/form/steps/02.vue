@@ -66,27 +66,27 @@ const initialValues = computed(() => ({
 	...formGroupLocalAnswers.value,
 }))
 
-const validationSchema = yup.object({
-	// familyConflicts: yup.object({
-	// 	checked: yup.boolean().nullable(),
-	// 	level: yup
-	// 		.number()
-	// 		.nullable()
-	// 		.min(1, 'Deve ser um número entre 1 e 10')
-	// 		.max(10, 'Deve ser um número entre 1 e 10'),
-	// }),
-	// trauma: yup.object({
-	// 	checked: yup.boolean().nullable(),
-	// 	level: yup
-	// 		.number()
-	// 		.nullable()
-	// 		.min(1, 'Deve ser um número entre 1 e 10')
-	// 		.max(10, 'Deve ser um número entre 1 e 10'),
-	// }),
-})
+// const validationSchema = yup.object({
+// familyConflicts: yup.object({
+// 	checked: yup.boolean().nullable(),
+// 	level: yup
+// 		.number()
+// 		.nullable()
+// 		.min(1, 'Deve ser um número entre 1 e 10')
+// 		.max(10, 'Deve ser um número entre 1 e 10'),
+// }),
+// trauma: yup.object({
+// 	checked: yup.boolean().nullable(),
+// 	level: yup
+// 		.number()
+// 		.nullable()
+// 		.min(1, 'Deve ser um número entre 1 e 10')
+// 		.max(10, 'Deve ser um número entre 1 e 10'),
+// }),
+// })
 
 const { meta, values, setValues, defineField, handleSubmit } = useForm({
-	validationSchema,
+	// validationSchema,
 	initialValues: initialValues.value,
 })
 
@@ -108,7 +108,7 @@ const handleSubmitForm = handleSubmit(async () => {
 	// await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
 
-const vSelectWrapperClass = computed(() => (mobile ? 'pt-3' : ''))
+const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 </script>
 
 <template>
@@ -325,7 +325,7 @@ const vSelectWrapperClass = computed(() => (mobile ? 'pt-3' : ''))
 							color="primary"
 							variant="flat"
 							size="large"
-							:disabled="!meta.valid || true"
+							:disabled="!meta.valid"
 							:width="!lifeMapFormContext.getPrevStep() ? '100%' : '49%'"
 							class="rounded-xl-i"
 						>
