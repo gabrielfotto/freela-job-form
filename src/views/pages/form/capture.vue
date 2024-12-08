@@ -55,8 +55,8 @@ const handleSubmitForm = handleSubmit(async () => {
 							<v-col cols="12">
 								<div class="d-flex flex-column">
 									<span class="text-h4 mb-2">
-										Preencha seus dados abaixo para ver o resultado do seu Mapa
-										da Vida</span
+										Preencha os dados abaixo para ver o resultado do seu Mapa da
+										Vida</span
 									>
 								</div>
 							</v-col>

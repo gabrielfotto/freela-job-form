@@ -146,7 +146,7 @@ function getFieldValue(type, stepId, key) {
 								</template>
 							</v-chip-group>
 						</div>
-						<v-divider class="mt-6"></v-divider>
+						<v-divider class="mt-3"></v-divider>
 					</v-col>
 				</v-row>
 
