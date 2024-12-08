@@ -44,7 +44,7 @@ onBeforeMount(() => {
 <template>
 	<v-row>
 		<v-col cols="12">
-			<MultiStepTimeline :form-context="formContext" />
+			<MultiStepFormTimeline :form-context="formContext" />
 		</v-col>
 		<v-col cols="12">
 			<form

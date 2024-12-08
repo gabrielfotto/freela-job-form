@@ -91,7 +91,7 @@ const handleSubmitForm = handleSubmit(async () => {
 		...values,
 	}
 
-	router.push('/form/review')
+	router.push('/form/capture')
 	// await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
 </script>
@@ -275,7 +275,7 @@ const handleSubmitForm = handleSubmit(async () => {
 							:width="!lifeMapFormContext.getPrevStep() ? '100%' : '49%'"
 							class="rounded-xl-i"
 						>
-							Continuar
+							Finalizar
 						</v-btn>
 					</div>
 				</v-col>
