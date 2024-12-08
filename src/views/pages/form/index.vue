@@ -37,7 +37,7 @@
 									</p>
 								</div>
 							</v-card-item>
-							<v-card-actions class="px-4">
+							<v-card-actions class="px-4 pb-10">
 								<v-btn
 									to="/form/steps"
 									size="large"

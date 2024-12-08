@@ -60,6 +60,7 @@ const handleSubmitForm = handleSubmit(async () => {
 									>
 								</div>
 							</v-col>
+							<v-divider class="mx-4"></v-divider>
 							<v-col cols="12">
 								<div class="d-flex flex-column">
 									<span class="font-weight-medium mb-2">Nome</span>
@@ -155,7 +156,6 @@ const handleSubmitForm = handleSubmit(async () => {
 		<v-row>
 			<v-col cols="12" class="px-4">
 				<div class="d-flex justify-center">
-					<!-- <TrgClubLogo /> -->
 					<TerapeutaDeResultadosLogo />
 				</div>
 			</v-col>
