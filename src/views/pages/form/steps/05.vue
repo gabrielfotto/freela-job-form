@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
-import { useRouter } from 'vue-router'
 
+import { useRouter } from 'vue-router'
 import { useDisplay } from 'vuetify'
 import { useLocalStorage } from '@vueuse/core'
 
@@ -94,28 +94,28 @@ const handleSubmitForm = handleSubmit(async () => {
 	router.push('/form/review')
 	// await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
-
-const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 </script>
 
 <template>
 	<v-card elevation="10" class="rounded-xl-i">
-		<v-card-item class="px-4">
-			<v-row>
+		<v-card-item class="px-0">
+			<v-row class="px-4">
 				<v-col cols="12">
 					<div class="d-flex flex-column">
 						<span class="text-h4 mb-2">
 							Em relação ao futuro, algum desses temas te trazem medo, angústia
 							ou desconforto?
 						</span>
-						<span class="text-grey400">
-							Dentre os temas listados abaixo, selecione aqueles que você deseja
-							tratar na terapia:
+						<span class="text-grey400 fs-15">
+							Selecione os temas que despertam em você sentimentos como medo,
+							angústia ou desconforto ao pensar no futuro. Informe uma nota de 1
+							a 10, onde 1 significa "baixo desconforto" e 10 significa "alto
+							desconforto".
 						</span>
 					</div>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="abandonment.checked"
 						color="primary"
@@ -139,8 +139,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="illnesses.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Doenças</span>
@@ -160,8 +160,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="death.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Morte</span>
@@ -181,8 +181,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="poverty.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Pobreza</span>
@@ -202,8 +202,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="loneliness.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Solidão</span>
@@ -223,8 +223,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="oldAge.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Velhice</span>

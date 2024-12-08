@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 
@@ -66,28 +66,35 @@ const initialValues = computed(() => ({
 }))
 
 // const validationSchema = yup.object({
-// familyConflicts: yup.object({
-// 	checked: yup.boolean().nullable(),
-// 	level: yup
-// 		.number()
-// 		.nullable()
-// 		.min(1, 'Deve ser um número entre 1 e 10')
-// 		.max(10, 'Deve ser um número entre 1 e 10'),
-// }),
-// trauma: yup.object({
-// 	checked: yup.boolean().nullable(),
-// 	level: yup
-// 		.number()
-// 		.nullable()
-// 		.min(1, 'Deve ser um número entre 1 e 10')
-// 		.max(10, 'Deve ser um número entre 1 e 10'),
-// }),
+// 	abandonment: yup.object().when([], {
+// 		is: value => value?.checked,
+// 		then: () =>
+// 			yup.object({
+// 				checked: yup.boolean().nullable(),
+// 				level: yup
+// 					.number()
+// 					.required('É necessário fornecer um número')
+// 					.min(1, 'Deve ser um número entre 1 e 10')
+// 					.max(10, 'Deve ser um número entre 1 e 10'),
+// 			}),
+// 		otherwise: () =>
+// 			yup.object({
+// 				checked: yup.boolean().nullable(),
+// 				level: yup.number().nullable().optional(),
+// 			}),
+// 	}),
 // })
 
 const { meta, values, setValues, defineField, handleSubmit } = useForm({
 	// validationSchema,
 	initialValues: initialValues.value,
 })
+
+// const fields = Object.keys(defaultValues).reduce((acc, key) => {
+// 	// @ts-ignore
+//   acc[key] = defineField(key)[0]
+//   return acc
+// }, {} as Record<string, ReturnType<typeof defineField>[0]>)
 
 const [abandonment] = defineField('abandonment')
 const [sexualAbuse] = defineField('sexualAbuse')
@@ -110,21 +117,22 @@ const handleSubmitForm = handleSubmit(async () => {
 
 <template>
 	<v-card elevation="10" class="rounded-xl-i">
-		<v-card-item class="px-4">
-			<v-row>
+		<v-card-item class="px-0">
+			<v-row class="px-4">
 				<v-col cols="12">
 					<div class="d-flex flex-column">
 						<span class="text-h4 mb-2">
 							Você já vivenciou alguma dessas experiências ao longo da sua vida?
 						</span>
-						<span class="text-grey400">
-							Dentre os temas listados abaixo, selecione aqueles que você deseja
-							tratar na terapia:
+						<span class="text-grey400 fs-15">
+							Marque as situações que você já enfrentou em qualquer fase da sua
+							vida. Informe uma nota de 1 a 10, onde 1 significa "baixo
+							desconforto" e 10 significa "alto desconforto".
 						</span>
 					</div>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="abandonment.checked"
 						color="primary"
@@ -148,8 +156,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="sexualAbuse.checked"
 						color="primary"
@@ -173,8 +181,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="verbalAbuse.checked"
 						color="primary"
@@ -198,8 +206,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="familyConflicts.checked"
 						color="primary"
@@ -225,8 +233,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="despair.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Desespero</span>
@@ -246,8 +254,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="financialDifficulties.checked"
 						color="primary"
@@ -273,8 +281,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="humiliations.checked"
 						color="primary"
@@ -298,8 +306,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="trauma.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Traumas</span>
@@ -319,8 +327,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="violence.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Violência</span>
@@ -342,7 +350,7 @@ const handleSubmitForm = handleSubmit(async () => {
 				</v-col>
 			</v-row>
 		</v-card-item>
-		<v-card-actions class="px-4 pb-10">
+		<v-card-actions class="px-3 pb-10">
 			<v-row>
 				<v-col>
 					<div class="d-flex align-center justify-center">

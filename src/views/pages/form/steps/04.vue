@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 
@@ -86,27 +86,26 @@ const handleSubmitForm = handleSubmit(async () => {
 
 	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
 })
-
-const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 </script>
 
 <template>
 	<v-card elevation="10" class="rounded-xl-i">
-		<v-card-item class="px-4">
-			<v-row>
+		<v-card-item class="px-0">
+			<v-row class="px-4">
 				<v-col cols="12">
 					<div class="d-flex flex-column">
 						<span class="text-h4 mb-2">
 							Você possui alguma dor, doença ou desconforto no corpo físico?
 						</span>
-						<span class="text-grey400">
-							Dentre os temas listados abaixo, selecione aqueles que você deseja
-							tratar na terapia:
+						<span class="text-grey400 fs-15">
+							Indique se você enfrenta dores, doenças ou desconfortos físicos e
+							qual o grau de desconforto atual. Informe uma nota de 1 a 10, onde
+							1 significa "baixo desconforto" e 10 significa "alto desconforto".
 						</span>
 					</div>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="allergies.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Alergias</span>
@@ -126,8 +125,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="skinDiseases.checked"
 						color="primary"
@@ -151,8 +150,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="autoimmuneDiseases.checked"
 						color="primary"
@@ -176,8 +175,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="headache.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Enxaqueca</span>
@@ -197,8 +196,8 @@ const colsClasses = computed(() => (mobile ? 'pt-0' : 'pt-3'))
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="fibromyalgia.checked"
 						color="primary"

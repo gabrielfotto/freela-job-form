@@ -1,21 +1,12 @@
-<script setup lang="ts">
-import { onBeforeMount, watch } from 'vue'
-import { RouterView } from 'vue-router'
-import { useDisplay } from 'vuetify'
-
-import { useCustomizerStore } from '@/stores/customizer'
-
-const { mdAndUp } = useDisplay()
-const customizer = useCustomizerStore()
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<v-container class="px-3">
 		<v-row>
 			<v-col cols="12" class="px-4">
-				<div class="d-flex justify-space-between align-center">
+				<div class="d-flex justify-center">
 					<!-- <TrgClubLogo /> -->
-					<span class="text-h3 font-weight-medium">Mapa da Vida</span>
+					<TerapeutaDeResultadosLogo />
 				</div>
 			</v-col>
 		</v-row>
@@ -25,12 +16,26 @@ const customizer = useCustomizerStore()
 					<v-col cols="12">
 						<v-card elevation="10">
 							<v-card-item class="px-4">
-								<span class="text-grey400"
-									>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Possimus, cupiditate repellendus aspernatur eveniet doloribus
-									provident. Eveniet, natus adipisci, autem sit qui dignissimos
-									numquam minus eum culpa iure, quaerat esse molestiae.</span
-								>
+								<div class="d-flex flex-column">
+									<span class="text-h4 mb-2">Bem-vindo ao Mapa da Vida</span>
+									<p class="text-grey400">
+										Você está prestes a dar um passo importante no caminho do
+										autoconhecimento. Este formulário foi criado para ajudá-lo a
+										refletir sobre as experiências que moldaram sua vida e
+										compreender os desafios que você enfrenta.
+									</p>
+									<br />
+									<p class="text-grey400">
+										Ao final, você receberá uma análise personalizada que
+										destacará os pontos que merecem atenção para alcançar
+										equilíbrio e bem-estar.
+									</p>
+									<br />
+									<p class="text-grey400">
+										Reserve um momento tranquilo e seja sincero consigo mesmo.
+										Vamos começar?
+									</p>
+								</div>
 							</v-card-item>
 							<v-card-actions class="px-4">
 								<v-btn
@@ -39,7 +44,7 @@ const customizer = useCustomizerStore()
 									color="primary"
 									variant="flat"
 									block
-									>Começar</v-btn
+									>Começar Minha Jornada</v-btn
 								>
 							</v-card-actions>
 						</v-card>

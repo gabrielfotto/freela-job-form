@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 
@@ -235,21 +235,23 @@ const handleSubmitForm = handleSubmit(async () => {
 
 <template>
 	<v-card elevation="10" class="rounded-xl-i">
-		<v-card-item class="px-4">
-			<v-row>
+		<v-card-item class="px-0">
+			<v-row class="px-4">
 				<v-col cols="12">
 					<div class="d-flex flex-column">
 						<span class="text-h4 mb-2">
 							Você possui alguns desses transtornos?
 						</span>
-						<span class="text-grey400">
-							Dentre os temas listados abaixo, selecione aqueles que você deseja
-							tratar na terapia:
+						<span class="text-grey400 fs-15">
+							Selecione os transtornos que você já foi diagnosticado ou que
+							acredita enfrentar e qual o grau de desconforto atual. Informe uma
+							nota de 1 a 10, onde 1 significa "baixo desconforto" e 10
+							significa "alto desconforto".
 						</span>
 					</div>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="alcoholism.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Alcoolismo</span>
@@ -269,8 +271,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="anguish.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Angústia</span>
@@ -290,8 +292,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="anorexia.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Anorexia</span>
@@ -311,8 +313,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="anxiety.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Ansiedade</span>
@@ -332,8 +334,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="lowSelfEsteem.checked"
 						color="primary"
@@ -357,8 +359,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="borderline.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Borderline</span>
@@ -378,8 +380,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="bulimia.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Bulimia</span>
@@ -399,8 +401,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="burnout.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Burnout</span>
@@ -420,8 +422,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="excessiveJealousy.checked"
 						color="primary"
@@ -445,8 +447,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="bingeEating.checked"
 						color="primary"
@@ -472,8 +474,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="sexualCompulsion.checked"
 						color="primary"
@@ -497,8 +499,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="depression.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Depressão</span>
@@ -518,8 +520,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="despair.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Desespero</span>
@@ -539,8 +541,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="erectileDysfunction.checked"
 						color="primary"
@@ -564,8 +566,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="financialScarcity.checked"
 						color="primary"
@@ -591,8 +593,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="lackOfLibido.checked"
 						color="primary"
@@ -616,8 +618,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="phobias.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Fobias</span>
@@ -637,8 +639,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="failure.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Fracasso</span>
@@ -658,8 +660,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="frigidity.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Frigidez</span>
@@ -679,8 +681,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="insecurity.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Insegurança</span>
@@ -700,8 +702,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="fears.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Medos</span>
@@ -721,8 +723,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="moodSwing.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Oscilação de Humor</span>
@@ -742,8 +744,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="panic.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Pânico</span>
@@ -763,8 +765,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="uncontrolledAnger.checked"
 						color="primary"
@@ -788,8 +790,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="remorse.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Remorso</span>
@@ -809,8 +811,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="feelingOfGuilt.checked"
 						color="primary"
@@ -836,8 +838,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="loneliness.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Solidão</span>
@@ -857,8 +859,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="toc.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">TOC</span>
@@ -878,17 +880,15 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="deepSadness.checked"
 						color="primary"
 						hide-details
 					>
 						<template #label>
-							<span class="text-h6 font-weight-medium"
-								>ViTristeza Profunda</span
-							>
+							<span class="text-h6 font-weight-medium">Tristeza Profunda</span>
 						</template>
 					</v-checkbox>
 				</v-col>
@@ -905,8 +905,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="shame.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium">Vergonha</span>
@@ -926,8 +926,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox v-model="bodyShame.checked" color="primary" hide-details>
 						<template #label>
 							<span class="text-h6 font-weight-medium"
@@ -949,8 +949,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="drugAddictions.checked"
 						color="primary"
@@ -974,8 +974,8 @@ const handleSubmitForm = handleSubmit(async () => {
 						hide-details
 					></v-select>
 				</v-col>
-				<v-divider></v-divider>
-				<v-col cols="12" md="4">
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
 						v-model="gamingAddictions.checked"
 						color="primary"
