@@ -4,6 +4,9 @@ import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 
 import { useRouter } from 'vue-router'
+import { useScrollToTop } from '@/composables'
+
+useScrollToTop()
 
 const router = useRouter()
 const phoneMask = { mask: '(##) # ####-####' }
