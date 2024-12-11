@@ -26,7 +26,7 @@ const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 			<v-col cols="12" class="px-4">
 				<div class="d-flex justify-center">
 					<!-- <TrgClubLogo /> -->
-					<TerapeutaDeResultadosLogo :width="200" />
+					<TerapeutaDeResultadosLogo :width="220" />
 				</div>
 			</v-col>
 		</v-row>

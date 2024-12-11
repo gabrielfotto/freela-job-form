@@ -159,7 +159,7 @@ const handleSubmitForm = handleSubmit(async () => {
 		<v-row>
 			<v-col cols="12" class="px-4">
 				<div class="d-flex justify-center">
-					<TerapeutaDeResultadosLogo />
+					<TerapeutaDeResultadosLogo :width="220" />
 				</div>
 			</v-col>
 		</v-row>
