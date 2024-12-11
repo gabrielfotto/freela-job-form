@@ -32,8 +32,8 @@ const { meta, errors, defineField, handleSubmit } = useForm({
 		name: '',
 		email: '',
 		phone: '',
-		dataConsent1: false,
-		dataConsent2: false,
+		dataConsent1: true,
+		dataConsent2: true,
 	},
 })
 
@@ -106,7 +106,7 @@ const handleSubmitForm = handleSubmit(async () => {
 									:error-messages="errors.dataConsent1"
 								>
 									<template #label>
-										<span class="text-grey400"
+										<span class="text-grey400 fs-13"
 											>Autorizo IBFT/TRG a usar meus dados de contato para envio
 											de promoções e conteúdos relacionados. Estou ciente de que
 											posso cancelar essa autorização a qualquer momento.</span
@@ -125,7 +125,7 @@ const handleSubmitForm = handleSubmit(async () => {
 									:error-messages="errors.dataConsent2"
 								>
 									<template #label>
-										<span class="text-grey400"
+										<span class="text-grey400 fs-13"
 											>Autorizo IBFT/TRG a usar as informações sobre meu estado
 											emocional para personalizar a comunicação comigo, conforme
 											a Política de Privacidade.</span
