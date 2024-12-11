@@ -124,7 +124,7 @@ const handleSubmitForm = handleSubmit(async () => {
 						<span class="text-h4 mb-2">
 							Você já vivenciou alguma dessas experiências ao longo da sua vida?
 						</span>
-						<span class="text-grey400 fs-15">
+						<span class="text-grey400 fs-14">
 							Marque as situações que você já enfrentou em qualquer fase da sua
 							vida. Informe uma nota de 1 a 10, onde 1 significa "baixo
 							desconforto" e 10 significa "alto desconforto".

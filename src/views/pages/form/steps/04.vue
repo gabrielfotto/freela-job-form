@@ -97,7 +97,7 @@ const handleSubmitForm = handleSubmit(async () => {
 						<span class="text-h4 mb-2">
 							Você possui alguma dor, doença ou desconforto no corpo físico?
 						</span>
-						<span class="text-grey400 fs-15">
+						<span class="text-grey400 fs-14">
 							Indique se você enfrenta dores, doenças ou desconfortos físicos e
 							qual o grau de desconforto atual. Informe uma nota de 1 a 10, onde
 							1 significa "baixo desconforto" e 10 significa "alto desconforto".

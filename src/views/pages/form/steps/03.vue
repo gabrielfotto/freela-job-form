@@ -242,7 +242,7 @@ const handleSubmitForm = handleSubmit(async () => {
 						<span class="text-h4 mb-2">
 							Você possui alguns desses transtornos?
 						</span>
-						<span class="text-grey400 fs-15">
+						<span class="text-grey400 fs-14">
 							Selecione os transtornos que você já foi diagnosticado ou que
 							acredita enfrentar e qual o grau de desconforto atual. Informe uma
 							nota de 1 a 10, onde 1 significa "baixo desconforto" e 10

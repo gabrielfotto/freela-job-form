@@ -106,7 +106,7 @@ const handleSubmitForm = handleSubmit(async () => {
 							Em relação ao futuro, algum desses temas te trazem medo, angústia
 							ou desconforto?
 						</span>
-						<span class="text-grey400 fs-15">
+						<span class="text-grey400 fs-14">
 							Selecione os temas que despertam em você sentimentos como medo,
 							angústia ou desconforto ao pensar no futuro. Informe uma nota de 1
 							a 10, onde 1 significa "baixo desconforto" e 10 significa "alto

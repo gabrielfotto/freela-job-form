@@ -47,7 +47,7 @@ const handleSubmitForm = handleSubmit(async () => {
 				<v-col>
 					<div class="d-flex flex-column">
 						<span class="text-h4 mb-2">Qual sua queixa principal?</span>
-						<span class="text-grey400 fs-15 mb-3"
+						<span class="text-grey400 fs-14 mb-3"
 							>Descreva o que mais incomoda ou preocupa você neste momento. Pode
 							ser algo relacionado à sua vida pessoal, profissional, emocional
 							ou qualquer outro aspecto.</span
@@ -61,9 +61,9 @@ const handleSubmitForm = handleSubmit(async () => {
 						/>
 						<v-divider class="mt-6 mb-4"></v-divider>
 						<span class="font-weight-medium mb-2"
-							>O quanto você se sente feliz com sua vida hoje?</span
+							>Quão feliz você está hoje?</span
 						>
-						<span class="text-grey400 fs-15 mb-3"
+						<span class="text-grey400 fs-14 mb-3"
 							>Avalie sua felicidade com uma nota de 1 a 10, onde 1 significa
 							"nada feliz" e 10 significa "extremamente feliz".</span
 						>
