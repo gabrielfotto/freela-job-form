@@ -337,6 +337,33 @@ const handleSubmitForm = handleSubmit(async () => {
 				<v-divider class="mx-3"></v-divider>
 				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
 					<v-checkbox
+						v-model="generalizedAnxiety.checked"
+						color="primary"
+						hide-details
+					>
+						<template #label>
+							<span class="text-h6 font-weight-medium"
+								>Ansiedade Generalizada</span
+							>
+						</template>
+					</v-checkbox>
+				</v-col>
+				<v-col
+					v-if="generalizedAnxiety.checked"
+					cols="12"
+					md="4"
+					:class="mobile ? 'pt-0' : 'pt-3'"
+				>
+					<v-select
+						v-model="generalizedAnxiety.level"
+						:items="levels"
+						placeholder="Grau de desconforto"
+						hide-details
+					></v-select>
+				</v-col>
+				<v-divider class="mx-3"></v-divider>
+				<v-col cols="12" md="4" :class="['px-1', mobile ? 'py-1' : '']">
+					<v-checkbox
 						v-model="lowSelfEsteem.checked"
 						color="primary"
 						hide-details

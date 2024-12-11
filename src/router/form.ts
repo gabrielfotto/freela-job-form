@@ -25,11 +25,36 @@ const FormRoutes = {
 					path: '02',
 					component: () => import('@/views/pages/form/steps/02.vue'),
 				},
+				// --------------------------------------------------------------
 				{
 					name: 'Step 3',
 					path: '03',
+					// redirect: '/form/steps/03/1',
 					component: () => import('@/views/pages/form/steps/03.vue'),
+					children: [
+						{
+							name: 'Step 3-1',
+							path: '1',
+							component: () => import('@/views/pages/form/steps/03-1.vue'),
+						},
+						{
+							name: 'Step 3-2',
+							path: '2',
+							component: () => import('@/views/pages/form/steps/03-2.vue'),
+						},
+						{
+							name: 'Step 3-3',
+							path: '3',
+							component: () => import('@/views/pages/form/steps/03-3.vue'),
+						},
+						{
+							name: 'Step 3-4',
+							path: '4',
+							component: () => import('@/views/pages/form/steps/03-4.vue'),
+						},
+					],
 				},
+				// --------------------------------------------------------------
 				{
 					name: 'Step 4',
 					path: '04',
