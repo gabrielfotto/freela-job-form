@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 
 const props = defineProps<{
 	formContext: MultiStepFormContext
+	step?: number
 }>()
 
 function getTimelineDotColor(stepId: number, index: number) {

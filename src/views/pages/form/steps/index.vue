@@ -14,10 +14,10 @@ const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 
 <template>
 	<v-container class="px-3 pb-10">
-		<v-col cols="12">
-			<MultiStepFormTimeline :form-context="lifeMapFormContext" />
-		</v-col>
 		<v-row>
+			<v-col cols="12" class="pb-0">
+				<MultiStepFormTimeline :form-context="lifeMapFormContext" />
+			</v-col>
 			<v-col cols="12">
 				<RouterView />
 			</v-col>
@@ -25,7 +25,6 @@ const lifeMapFormContext = provideMultiStepForm(lifeMapFormInjectionKeySymbol, {
 		<v-row>
 			<v-col cols="12" class="px-4">
 				<div class="d-flex justify-center">
-					<!-- <TrgClubLogo /> -->
 					<TerapeutaDeResultadosLogo :width="220" />
 				</div>
 			</v-col>

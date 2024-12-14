@@ -106,7 +106,7 @@ onMounted(() => {
 							color="primary"
 							variant="flat"
 							size="large"
-							:width="!getPrevStep() ? '100%' : '49%'"
+							:width="!getPrevStep() ? '100%' : '49.5%'"
 							:disabled="!meta.valid"
 						>
 							Continuar

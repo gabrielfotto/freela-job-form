@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 
@@ -9,10 +9,14 @@ import { useLocalStorage } from '@vueuse/core'
 import { useMultiStepForm, useScrollToTop } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
+const CURRENT_STEP_ID = inject('CURRENT_STEP_ID')
+const formInjectionKeySymbol = inject<Symbol>('FORM_INJECTION_KEY_SYMBOL')
+
 useScrollToTop()
 const { mobile } = useDisplay()
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
+const formContext = useMultiStepForm(formInjectionKeySymbol)
 
 const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -56,7 +60,7 @@ const defaultValues = {
 }
 
 const formGroupLocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}:${lifeMapFormContext.currentStepId.value}`,
+	`${lifeMapFormInjectionKeySymbol.description}:${CURRENT_STEP_ID}-${formContext.currentStepId.value}`,
 	defaultValues
 )
 
@@ -66,22 +70,7 @@ const initialValues = computed(() => ({
 }))
 
 // const validationSchema = yup.object({
-// familyConflicts: yup.object({
-// 	checked: yup.boolean().nullable(),
-// 	level: yup
-// 		.number()
-// 		.nullable()
-// 		.min(1, 'Deve ser um número entre 1 e 10')
-// 		.max(10, 'Deve ser um número entre 1 e 10'),
-// }),
-// trauma: yup.object({
-// 	checked: yup.boolean().nullable(),
-// 	level: yup
-// 		.number()
-// 		.nullable()
-// 		.min(1, 'Deve ser um número entre 1 e 10')
-// 		.max(10, 'Deve ser um número entre 1 e 10'),
-// }),
+
 // })
 
 const { meta, values, setValues, defineField, handleSubmit } = useForm({
@@ -104,8 +93,18 @@ const handleSubmitForm = handleSubmit(async () => {
 		...values,
 	}
 
-	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
+	// await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
+	await formContext.goToStep(formContext.getNextStep())
 })
+
+async function handlePrevStep() {
+	const prevStepId = formContext.getPrevStep()
+	if (prevStepId) {
+		await formContext.goToStep(prevStepId)
+	} else {
+		await lifeMapFormContext.goToStep(lifeMapFormContext.getPrevStep())
+	}
+}
 </script>
 
 <template>
@@ -116,6 +115,9 @@ const handleSubmitForm = handleSubmit(async () => {
 					<div class="d-flex flex-column">
 						<span class="text-h4 mb-2">
 							Você possui alguns desses transtornos?
+							<span class="font-weight-medium text-decoration-underline"
+								>Parte 1</span
+							>
 						</span>
 						<span class="text-grey400 fs-14">
 							Selecione os transtornos que você já foi diagnosticado ou que
@@ -332,12 +334,7 @@ const handleSubmitForm = handleSubmit(async () => {
 					<div class="d-flex align-center justify-center">
 						<v-btn
 							v-if="lifeMapFormContext.getPrevStep()"
-							@click="
-								lifeMapFormContext.goToStep(
-									lifeMapFormContext.getPrevStep() as any
-								)
-							"
-							:disabled="!lifeMapFormContext.getPrevStep()"
+							@click="handlePrevStep"
 							color="primary"
 							variant="outlined"
 							width="49.5%"

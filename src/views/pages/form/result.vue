@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols'
 
@@ -18,18 +18,46 @@ const formGroupStep01LocalAnswers = useLocalStorage(
 	`${lifeMapFormInjectionKeySymbol.description}:${step01Id}`,
 	null
 )
+
 const formGroupStep02LocalAnswers = useLocalStorage(
 	`${lifeMapFormInjectionKeySymbol.description}:${step02Id}`,
 	null
 )
-const formGroupStep03LocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}:${step03Id}`,
+
+const formGroupStep03_1LocalAnswers = useLocalStorage(
+	`${lifeMapFormInjectionKeySymbol.description}:${step03Id}-${0}`,
 	null
 )
+
+const formGroupStep03_2LocalAnswers = useLocalStorage(
+	`${lifeMapFormInjectionKeySymbol.description}:${step03Id}-${1}`,
+	null
+)
+
+const formGroupStep03_3LocalAnswers = useLocalStorage(
+	`${lifeMapFormInjectionKeySymbol.description}:${step03Id}-${2}`,
+	null
+)
+
+const formGroupStep03_4LocalAnswers = useLocalStorage(
+	`${lifeMapFormInjectionKeySymbol.description}:${step03Id}-${3}`,
+	null
+)
+
+const formGroupStep03LocalAnswers = ref(
+	JSON.stringify({
+		...JSON.parse(formGroupStep03_1LocalAnswers.value),
+		...JSON.parse(formGroupStep03_2LocalAnswers.value),
+		...JSON.parse(formGroupStep03_3LocalAnswers.value),
+		...JSON.parse(formGroupStep03_4LocalAnswers.value),
+	})
+)
+
 const formGroupStep04LocalAnswers = useLocalStorage(
 	`${lifeMapFormInjectionKeySymbol.description}:${step04Id}`,
 	null
 )
+
 const formGroupStep05LocalAnswers = useLocalStorage(
 	`${lifeMapFormInjectionKeySymbol.description}:${step05Id}`,
 	null

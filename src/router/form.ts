@@ -29,7 +29,7 @@ const FormRoutes = {
 				{
 					name: 'Step 3',
 					path: '03',
-					// redirect: '/form/steps/03/1',
+					redirect: '/form/steps/03/1',
 					component: () => import('@/views/pages/form/steps/03.vue'),
 					children: [
 						{

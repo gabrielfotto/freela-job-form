@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeMount } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 import { useLocalStorage } from '@vueuse/core'
@@ -8,10 +8,13 @@ import { useMultiStepForm, useScrollToTop } from '@/composables'
 import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
 useScrollToTop()
+
+const CURRENT_FORM_STEP_ID = 0
+
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
 const formGroupLocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}:${lifeMapFormContext.currentStepId.value}`,
+	`${lifeMapFormInjectionKeySymbol.description}:${CURRENT_FORM_STEP_ID}`,
 	{
 		mainComplaint: '',
 		lifeSatisfactionLevel: null,
@@ -37,6 +40,10 @@ const handleSubmitForm = handleSubmit(async () => {
 	}
 
 	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
+})
+
+onBeforeMount(() => {
+	lifeMapFormContext.setCurrentStepId(CURRENT_FORM_STEP_ID)
 })
 </script>
 
@@ -104,7 +111,7 @@ const handleSubmitForm = handleSubmit(async () => {
 							variant="flat"
 							size="large"
 							:disabled="!meta.valid"
-							:width="!lifeMapFormContext.getPrevStep() ? '100%' : '49%'"
+							:width="!lifeMapFormContext.getPrevStep() ? '100%' : '49.5%'"
 							class="rounded-xl-i"
 						>
 							Continuar

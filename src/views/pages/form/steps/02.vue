@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeMount } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 
@@ -11,6 +11,8 @@ import { lifeMapFormInjectionKeySymbol } from '@/symbols/form'
 
 useScrollToTop()
 const { mobile } = useDisplay()
+
+const CURRENT_FORM_STEP_ID = 1
 
 const lifeMapFormContext = useMultiStepForm(lifeMapFormInjectionKeySymbol)
 
@@ -56,7 +58,7 @@ const defaultValues = {
 }
 
 const formGroupLocalAnswers = useLocalStorage(
-	`${lifeMapFormInjectionKeySymbol.description}:${lifeMapFormContext.currentStepId.value}`,
+	`${lifeMapFormInjectionKeySymbol.description}:${CURRENT_FORM_STEP_ID}`,
 	defaultValues
 )
 
@@ -66,23 +68,7 @@ const initialValues = computed(() => ({
 }))
 
 // const validationSchema = yup.object({
-// 	abandonment: yup.object().when([], {
-// 		is: value => value?.checked,
-// 		then: () =>
-// 			yup.object({
-// 				checked: yup.boolean().nullable(),
-// 				level: yup
-// 					.number()
-// 					.required('É necessário fornecer um número')
-// 					.min(1, 'Deve ser um número entre 1 e 10')
-// 					.max(10, 'Deve ser um número entre 1 e 10'),
-// 			}),
-// 		otherwise: () =>
-// 			yup.object({
-// 				checked: yup.boolean().nullable(),
-// 				level: yup.number().nullable().optional(),
-// 			}),
-// 	}),
+
 // })
 
 const { meta, values, setValues, defineField, handleSubmit } = useForm({
@@ -112,6 +98,10 @@ const handleSubmitForm = handleSubmit(async () => {
 	}
 
 	await lifeMapFormContext.goToStep(lifeMapFormContext.getNextStep())
+})
+
+onBeforeMount(() => {
+	lifeMapFormContext.setCurrentStepId(CURRENT_FORM_STEP_ID)
 })
 </script>
 
@@ -376,7 +366,7 @@ const handleSubmitForm = handleSubmit(async () => {
 							variant="flat"
 							size="large"
 							:disabled="!meta.valid"
-							:width="!lifeMapFormContext.getPrevStep() ? '100%' : '49%'"
+							:width="!lifeMapFormContext.getPrevStep() ? '100%' : '49.5%'"
 							class="rounded-xl-i"
 						>
 							Continuar
