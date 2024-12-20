@@ -71,6 +71,7 @@ const handleSubmitForm = handleSubmit(async () => {
 										v-model="name"
 										placeholder="Digite seu nome aqui..."
 										:error-messages="errors.name"
+										:hide-details="!errors.name"
 									></v-text-field>
 								</div>
 							</v-col>
@@ -82,6 +83,7 @@ const handleSubmitForm = handleSubmit(async () => {
 										v-model="email"
 										placeholder="Digite seu email aqui..."
 										:error-messages="errors.email"
+										:hide-details="!errors.email"
 									></v-text-field>
 								</div>
 							</v-col>
@@ -94,6 +96,7 @@ const handleSubmitForm = handleSubmit(async () => {
 										v-maska:[phoneMask]
 										placeholder="Digite seu telefone aqui..."
 										:error-messages="errors.phone"
+										:hide-details="!errors.phone"
 										type="tel"
 									></v-text-field>
 								</div>
@@ -104,6 +107,7 @@ const handleSubmitForm = handleSubmit(async () => {
 									v-model="dataConsent1"
 									color="primary"
 									:error-messages="errors.dataConsent1"
+									:hide-details="!errors.dataConsent1"
 								>
 									<template #label>
 										<span class="text-grey400 fs-13"
@@ -123,6 +127,7 @@ const handleSubmitForm = handleSubmit(async () => {
 									v-model="dataConsent2"
 									color="primary"
 									:error-messages="errors.dataConsent2"
+									:hide-details="!errors.dataConsent2"
 								>
 									<template #label>
 										<span class="text-grey400 fs-13"
